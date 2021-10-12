@@ -24,5 +24,10 @@ namespace Garage
         {
             InitializeComponent();
         }
+
+        private void TextBox_TextInput(object sender, TextCompositionEventArgs e)
+        {
+
+        }
     }
 }
