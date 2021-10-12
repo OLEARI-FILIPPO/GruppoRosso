@@ -68,17 +68,21 @@
             <RowDefinition />
             <RowDefinition Height="100px" />
         </Grid.RowDefinitions>
+        
 
-        <Grid x:Name="Garage" Margin="10,30,10,30"/>
+        <Grid x:Name="DynamicGrid" Margin="10,30,10,30">
+            <!-- Grid dove generare le col -->
+            <!-- Grid dove generare le col -->
+        </Grid>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="400" VerticalAlignment="Center" Height="100" Grid.Row="1">
             <Label x:Name="Row_label" Content="Row" Height="32" Width="48" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox Width="70" Height="28" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="Row"  Width="70" Height="28" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
             <Label x:Name="Column_label" Content="Col" Height="32" Width="48" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox Width="70" Height="28" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+            <TextBox x:Name="Col" Width="70" Height="28" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
 
-            <Button x:Name="Button_Conferma" Content="CONFERMA" Height="37" Width="99" FontSize="14" Background="{x:Null}" BorderThickness="2,2,2,2" FontWeight="Normal" Margin="40,0,0,0" Style="{DynamicResource ButtonStyle1}"/>
+            <Button x:Name="Button_Conferma" Content="CONFERMA" Height="37" Width="99" FontSize="14" Background="{x:Null}" BorderThickness="2,2,2,2" FontWeight="Normal" Margin="40,0,0,0" Style="{DynamicResource ButtonStyle1}" Click="ConfermaClick"/>
         </StackPanel>
         <StackPanel Visibility="Visible" Orientation="Horizontal" HorizontalAlignment="Right" Width="400" VerticalAlignment="Center" Height="100" Grid.Row="1" Margin="0,0,0,0">
             <StackPanel>

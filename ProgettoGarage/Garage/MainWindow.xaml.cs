@@ -23,11 +23,88 @@ namespace Garage
         public MainWindow()
         {
             InitializeComponent();
+
+            DynamicGrid.ShowGridLines = true;
         }
 
-        private void TextBox_TextInput(object sender, TextCompositionEventArgs e)
+
+
+       
+
+        private void ConfermaClick(object sender, RoutedEventArgs e)
+        {
+            int row, col;
+
+            if (Row.Text == "" || Col.Text == "") //se utente non inserisce uno dei due dati(row o col) stampa il message di errore
+            {
+                MessageBox.Show("Non hai fornito uno dei dati richiesti(Row o Col)", "Error",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
+            else
+            {
+                row = Convert.ToInt32(Row.Text); //Converto Row.Text (String) in un intero
+                col = Convert.ToInt32(Col.Text); //Converto Col.Text (String) in un intero
+
+                GeneraRigheDinamiche(row); //con questo metodo genero le righe del grid
+                GeneraColDinamiche(col);   //con questo metodo genero le colonne del grid
+
+                GeneraButton();
+
+
+            }
+
+        }
+
+        private void GeneraButton()
         {
 
+            int iRow = -1;
+            foreach (RowDefinition righe in DynamicGrid.RowDefinitions)
+            {
+                iRow++;
+                int jCol = -1;
+
+                foreach (ColumnDefinition colonne in DynamicGrid.ColumnDefinitions)
+                {
+
+                    jCol++;
+
+                    //I pannelli sono uno dei tipi di controllo più importanti di WPF. Fungono da contenitori per altri controlli
+                    //e controllano il layout delle finestre/pagine.
+
+                    Border panel = new Border(); //Il border fungerà da panel dato che avrà al suo interno un button
+                    Grid.SetColumn(panel, jCol); //setto le colonne
+                    Grid.SetRow(panel, iRow); //setto le righe
+
+                    Button B = new Button();
+                    B.Content = "Ciao";
+                    B.Width = 50;
+                    B.Height = 30;
+                    B.HorizontalAlignment = HorizontalAlignment.Center;
+                    B.VerticalAlignment = VerticalAlignment.Center;
+                    panel.Child = B;
+                    panel.Margin = new Thickness(1);
+
+                    DynamicGrid.Children.Add(panel);
+                }
+
+            }
+        }
+
+        private void GeneraRigheDinamiche(int row)
+        {
+
+            for (int i = 0; i < row; i++) //Con questo ciclo genero le righe
+            {
+                DynamicGrid.RowDefinitions.Add(new RowDefinition());
+            }
+        }
+
+        private void GeneraColDinamiche(int col)
+        {
+            for (int i = 0; i < col; i++) //Con questo ciclo genere le colonne
+            {
+                DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
         }
     }
 }
