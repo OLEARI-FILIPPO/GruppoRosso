@@ -106,6 +106,7 @@ namespace Garage
                     Grid.SetColumn(panel, jCol); //setto le colonne
                     Grid.SetRow(panel, iRow); //setto le righe
 
+                    //genero il button
                     Button B = new Button();
                     B.Content = "Ciao";
                     B.Width = 50;
