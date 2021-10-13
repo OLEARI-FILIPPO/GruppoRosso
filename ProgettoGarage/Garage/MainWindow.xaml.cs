@@ -85,7 +85,7 @@ namespace Garage
                GeneraButton(); //con questo metodo genero i button
 
                checkButtonState = true;
-                Veicoli_metodi.Visibility = Visibility.Visible;
+               Veicoli_metodi.Visibility = Visibility.Visible;
             }
           
         }
