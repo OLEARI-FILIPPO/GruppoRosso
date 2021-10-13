@@ -108,7 +108,7 @@ namespace Garage
 
                     //genero il button
                     Button B = new Button();
-                    B.Content = "Ciao";
+                    B.Content = "P" + iRow.ToString() + jCol.ToString(); //assegno come il content il numero della cella che corrisponde alla righa e colonna in cui si trova
                     B.Width = 50;
                     B.Height = 30;
                     B.HorizontalAlignment = HorizontalAlignment.Center;
