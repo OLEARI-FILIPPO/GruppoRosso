@@ -29,20 +29,19 @@ namespace Garage
             DynamicGrid.ShowGridLines = true;
         }
 
-
-
-        bool checkButtonState = false;
+        bool checkButtonState = false; //stato di buttone
 
         private void ConfermaClick(object sender, RoutedEventArgs e) //evento onclick del button conferma
         {
-
             /*
+             * 
              Descrizione Bug: Se l'utente clicca per la seconda volta il button "conferma" con i nuovi i parametri
-                              l'app non cancella i vecchi button ne genera nuovi e li aggiunge agli altri
+                              l'app non cancella i vecchi button ne genera nuovi e li aggiunge agli altri.
 
              Soluzione: Creo un bool checkButtonState che di default è false ed diventa true quando il button viene clickato 
                         quando l'utente clicka il button controllo il suo stato se è vero invoko le invoko la funzione clear() per
                         cancellare tutto.
+
              */
 
             if (checkButtonState == false) //controllo lo stato 
@@ -61,7 +60,6 @@ namespace Garage
 
         private void GeneraGrid() //questa funzione mi genera il grid
         {
-
             int row, col;
 
             if (Row.Text == "" || Col.Text == "") //se utente non inserisce uno dei due dati(row o col) stampa il message di errore
@@ -87,7 +85,6 @@ namespace Garage
 
         private void GeneraButton()
         {
-
             int iRow = -1;
             foreach (RowDefinition righe in DynamicGrid.RowDefinitions)
             {
@@ -124,7 +121,6 @@ namespace Garage
 
         private void GeneraRigheDinamiche(int row) //Genera le righe in modo dinamiche
         {
-
             for (int i = 0; i < row; i++) //Con questo ciclo genero le righe
             {
                 DynamicGrid.RowDefinitions.Add(new RowDefinition());
