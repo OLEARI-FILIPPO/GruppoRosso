@@ -26,7 +26,7 @@ namespace Garage
         {
             InitializeComponent();
 
-            DynamicGrid.ShowGridLines = true;
+            DynamicGrid.ShowGridLines = false;
         }
 
 
@@ -109,20 +109,37 @@ namespace Garage
                     //I pannelli sono uno dei tipi di controllo più importanti di WPF. Fungono da contenitori per altri controlli
                     //e controllano il layout delle finestre/pagine.
 
-                    Border panel = new Border(); //Il border fungerà da panel dato che avrà al suo interno un button
+                    Border panel = new Border();
+                    {
+                        BorderThickness = new Thickness(1);
+                        //BorderBrush = new SolidColorBrush(Colors.Red);
+                        
+                    }
+
+
                     Grid.SetColumn(panel, jCol); //setto le colonne
                     Grid.SetRow(panel, iRow); //setto le righe
 
                     //genero il button
-                    Button B = new Button();
-                    B.Content = "P" + iRow.ToString() + jCol.ToString(); //assegno come il content il numero della cella che corrisponde alla righa e colonna in cui si trova
-                    B.Width = 50;
-                    B.Height = 30;
-                    B.HorizontalAlignment = HorizontalAlignment.Center;
-                    B.VerticalAlignment = VerticalAlignment.Center;
-                    panel.Child = B;
-                    panel.Margin = new Thickness(1);
+                    Button B = new Button()
+                    {
+                        Margin = new Thickness(3),
+                        HorizontalContentAlignment = HorizontalAlignment.Center,
+                        VerticalContentAlignment = VerticalAlignment.Center,
 
+                        Style = FindResource("StileVeicolo") as Style,
+                        Name = "Button_" + iRow + jCol,       //nome del bottone
+
+
+                        Content = "P" + iRow.ToString() + jCol.ToString(), //assegno come il content il numero della cella che corrisponde alla righa e colonna in cui si trova
+                        HorizontalAlignment = HorizontalAlignment.Stretch,
+                        VerticalAlignment = VerticalAlignment.Stretch,
+
+
+                    };
+
+                    //Formattazione bottone
+                    panel.Child = B;
                     DynamicGrid.Children.Add(panel);
                 }
 
