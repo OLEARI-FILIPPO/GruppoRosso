@@ -113,7 +113,6 @@ namespace Garage
                         
                     }
 
-
                     Grid.SetColumn(panel, jCol); //setto le colonne
                     Grid.SetRow(panel, iRow); //setto le righe
 
@@ -125,8 +124,7 @@ namespace Garage
                         VerticalContentAlignment = VerticalAlignment.Center,
 
                         Style = FindResource("StileVeicolo") as Style,
-                        Name = "Button_" + iRow + jCol,       //nome del bottone
-
+                        Name = "P" + iRow.ToString() + jCol.ToString(),     //nome del bottone ho messo nome del button uguale al contenuto 
 
                         Content = "P" + iRow.ToString() + jCol.ToString(), //assegno come il content il numero della cella che corrisponde alla righa e colonna in cui si trova
                         HorizontalAlignment = HorizontalAlignment.Stretch,
