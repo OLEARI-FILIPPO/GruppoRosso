@@ -18,6 +18,8 @@ namespace Garage
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+   
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -29,29 +31,58 @@ namespace Garage
 
 
 
-       
+        bool checkButtonState = false;
 
         private void ConfermaClick(object sender, RoutedEventArgs e) //evento onclick del button conferma
         {
+
+            /*
+             Descrizione Bug: Se l'utente clicca per la seconda volta il button "conferma" con i nuovi i parametri
+                              l'app non cancella i vecchi button ne genera nuovi e li aggiunge agli altri
+
+             Soluzione: Creo un bool checkButtonState che di default è false ed diventa true quando il button viene clickato 
+                        quando l'utente clicka il button controllo il suo stato se è vero invoko le invoko la funzione clear() per
+                        cancellare tutto.
+             */
+
+            if (checkButtonState == false) //controllo lo stato 
+            {
+                GeneraGrid();
+            }
+            else
+            {
+                DynamicGrid.RowDefinitions.Clear();    //cancello le righe
+                DynamicGrid.ColumnDefinitions.Clear(); //cancello le colonne
+                DynamicGrid.Children.Clear(); //cancello i componenti UI del grid
+                GeneraGrid(); //genero la nuova grid
+            }
+
+        }
+
+        private void GeneraGrid() //questa funzione mi genera il grid
+        {
+
             int row, col;
 
             if (Row.Text == "" || Col.Text == "") //se utente non inserisce uno dei due dati(row o col) stampa il message di errore
             {
-                MessageBox.Show("Non hai fornito uno dei dati richiesti(Row o Col)", "Error",MessageBoxButton.OK,MessageBoxImage.Error);
+               MessageBox.Show("Non hai fornito uno dei dati richiesti(Row o Col)", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                row = Convert.ToInt32(Row.Text); //Converto Row.Text (String) in un intero
-                col = Convert.ToInt32(Col.Text); //Converto Col.Text (String) in un intero
+                  
+               row = Convert.ToInt32(Row.Text); //Converto Row.Text (String) in un intero
+               col = Convert.ToInt32(Col.Text); //Converto Col.Text (String) in un intero
 
-                GeneraRigheDinamiche(row); //con questo metodo genero le righe del grid
-                GeneraColDinamiche(col);   //con questo metodo genero le colonne del grid
+               GeneraRigheDinamiche(row); //con questo metodo genero le righe del grid
+               GeneraColDinamiche(col);   //con questo metodo genero le colonne del grid
 
-                GeneraButton();
+               GeneraButton(); //con questo metodo genero i button
 
+               checkButtonState = true;
 
             }
-
+          
         }
 
         private void GeneraButton()
@@ -96,6 +127,7 @@ namespace Garage
             for (int i = 0; i < row; i++) //Con questo ciclo genero le righe
             {
                 DynamicGrid.RowDefinitions.Add(new RowDefinition());
+
             }
         }
 
@@ -106,5 +138,7 @@ namespace Garage
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
         }
+
+  
     }
 }
