@@ -6,7 +6,60 @@
         xmlns:local="clr-namespace:Garage"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
     <Window.Resources>
+
+        <Style x:Key="StileVeicolo" TargetType="Button">
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="#FF00C3BA"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0.8" CornerRadius="3">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#FF72FFE5" ShadowDepth="0"/>
+                            </Border.Effect>
+                            <TextBlock Foreground="{TemplateBinding BorderBrush}" Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- STILE DEI BOTTONE -->
+       <!-- <Style x:Key="StileVeicolo" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#373737" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="./#Segoe UI" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="8" Background="{TemplateBinding Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{TemplateBinding Foreground}" />
+                                <Setter Property="Foreground" Value="{TemplateBinding Background}" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="Black" />
+                                <Setter Property="Foreground" Value="{TemplateBinding Foreground}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+-->
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -107,14 +160,18 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
+
+
+       
     <Grid>
+        
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition/>
             <RowDefinition Height="100px" />
         </Grid.RowDefinitions>
         
 
-        <Grid x:Name="DynamicGrid" Margin="10,30,10,30">
+        <Grid x:Name="DynamicGrid" Margin="10,30,10,30" Background="#FF04000F">
             <!-- Grid dove generare le col -->
             <!-- Grid dove generare le col -->
         </Grid>
