@@ -31,7 +31,7 @@ namespace Garage
 
        
 
-        private void ConfermaClick(object sender, RoutedEventArgs e)
+        private void ConfermaClick(object sender, RoutedEventArgs e) //evento onclick del button conferma
         {
             int row, col;
 
@@ -90,7 +90,7 @@ namespace Garage
             }
         }
 
-        private void GeneraRigheDinamiche(int row)
+        private void GeneraRigheDinamiche(int row) //Genera le righe in modo dinamiche
         {
 
             for (int i = 0; i < row; i++) //Con questo ciclo genero le righe
@@ -99,7 +99,7 @@ namespace Garage
             }
         }
 
-        private void GeneraColDinamiche(int col)
+        private void GeneraColDinamiche(int col) //Genera le colonne in modo dinamiche
         {
             for (int i = 0; i < col; i++) //Con questo ciclo genere le colonne
             {
