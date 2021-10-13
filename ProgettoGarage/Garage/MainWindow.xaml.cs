@@ -43,16 +43,19 @@ namespace Garage
                         cancellare tutto.
 
              */
+            
 
             if (checkButtonState == false) //controllo lo stato 
             {
                 GeneraGrid();
+                
             }
             else
             {
                 DynamicGrid.RowDefinitions.Clear();    //cancello le righe
                 DynamicGrid.ColumnDefinitions.Clear(); //cancello le colonne
                 DynamicGrid.Children.Clear(); //cancello i componenti UI del grid
+
                 GeneraGrid(); //genero la nuova grid
             }
 
@@ -61,24 +64,28 @@ namespace Garage
         private void GeneraGrid() //questa funzione mi genera il grid
         {
             int row, col;
+            int.TryParse(Row.Text, out row); //Converto Row.Text (String) in un intero
+            int.TryParse(Col.Text, out col); //Converto Col.Text (String) in un intero
 
-            if (Row.Text == "" || Col.Text == "") //se utente non inserisce uno dei due dati(row o col) stampa il message di errore
+            /*
+             * Il "TryParse" fa in modo che il programma non generi eccezioni
+             * in caso l'utente inserisca qualsiasi valore nelle textbox
+             * e ritorna 0 se è stato inserito un valore diverso da un intero
+             */
+
+            if (row <= 0 || col <= 0) //se utente non inserisce uno dei due dati(row o col) stampa il message di errore
             {
                MessageBox.Show("Non hai fornito uno dei dati richiesti(Row o Col)", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                  
-               row = Convert.ToInt32(Row.Text); //Converto Row.Text (String) in un intero
-               col = Convert.ToInt32(Col.Text); //Converto Col.Text (String) in un intero
-
                GeneraRigheDinamiche(row); //con questo metodo genero le righe del grid
                GeneraColDinamiche(col);   //con questo metodo genero le colonne del grid
 
                GeneraButton(); //con questo metodo genero i button
 
                checkButtonState = true;
-
+                Veicoli_metodi.Visibility = Visibility.Visible;
             }
           
         }

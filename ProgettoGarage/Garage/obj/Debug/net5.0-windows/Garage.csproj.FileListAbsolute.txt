@@ -1,4 +1,3 @@
-C:\Users\Local\Desktop\GruppoRosso\ProgettoGarage\Garage\obj\Debug\net5.0-windows\Garage.csproj.AssemblyReference.cache
 C:\Users\Local\Desktop\GruppoRosso\ProgettoGarage\Garage\obj\Debug\net5.0-windows\MainWindow.g.cs
 C:\Users\Local\Desktop\GruppoRosso\ProgettoGarage\Garage\obj\Debug\net5.0-windows\App.g.cs
 C:\Users\Local\Desktop\GruppoRosso\ProgettoGarage\Garage\obj\Debug\net5.0-windows\Garage_MarkupCompile.cache
