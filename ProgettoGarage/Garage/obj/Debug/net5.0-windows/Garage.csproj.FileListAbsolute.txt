@@ -41,3 +41,5 @@ C:\Users\local\OneDrive\Desktop\GruppoRosso\ProgettoGarage\Garage\obj\Debug\net5
 C:\Users\local\OneDrive\Desktop\GruppoRosso\ProgettoGarage\Garage\obj\Debug\net5.0-windows\ref\Garage.dll
 C:\Users\local\OneDrive\Desktop\GruppoRosso\ProgettoGarage\Garage\obj\Debug\net5.0-windows\Garage.pdb
 C:\Users\local\OneDrive\Desktop\GruppoRosso\ProgettoGarage\Garage\obj\Debug\net5.0-windows\Garage.genruntimeconfig.cache
+C:\Users\Local\Desktop\GruppoRosso\ProgettoGarage\Garage\obj\Debug\net5.0-windows\Garage.csproj.AssemblyReference.cache
+C:\Users\Local\Desktop\GruppoRosso\ProgettoGarage\Garage\obj\Debug\net5.0-windows\Style.baml
