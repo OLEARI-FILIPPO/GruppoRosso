@@ -31,6 +31,8 @@ namespace Garage
 
         bool checkButtonState = false; //stato di buttone
 
+      //  List<Button> ListButton = new List<Button>();
+
         private void ConfermaClick(object sender, RoutedEventArgs e) //evento onclick del button conferma
         {
             /*
@@ -116,6 +118,8 @@ namespace Garage
                     Grid.SetColumn(panel, jCol); //setto le colonne
                     Grid.SetRow(panel, iRow); //setto le righe
 
+                    
+
                     //genero il button
                     Button B = new Button()
                     {
@@ -129,9 +133,20 @@ namespace Garage
                         Content = "P" + iRow.ToString() + jCol.ToString(), //assegno come il content il numero della cella che corrisponde alla righa e colonna in cui si trova
                         HorizontalAlignment = HorizontalAlignment.Stretch,
                         VerticalAlignment = VerticalAlignment.Stretch,
+                      //  Background = new SolidColorBrush(Colors.Red),
+
+                      //  Height = 100,
+                      //  Width = 100,
 
 
                     };
+
+                  //  ListButton.Add(B);
+
+                    B.Click += ParcheggioClick;
+           
+
+                   
 
                     //Formattazione bottone
                     panel.Child = B;
@@ -158,6 +173,20 @@ namespace Garage
             }
         }
 
-  
+
+        private void ParcheggioClick(object sender, RoutedEventArgs e) //questa funzione sarà usato per il evento onclick
+        {
+            MessageBox.Show("Funziona!!!!");
+
+            ((Button)sender).Content = "Hello";
+
+          //  ((Button)sender).Background = new SolidColorBrush(Colors.Red);
+
+
+
+            
+        }
+
+
     }
 }
