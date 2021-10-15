@@ -18,7 +18,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0.8" CornerRadius="3">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0.8" CornerRadius="7">
                             <Border.Effect>
                                 <DropShadowEffect Color="#FF72FFE5" ShadowDepth="0"/>
                             </Border.Effect>
@@ -27,7 +27,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style> 
 
         <!-- STILE DEI BOTTONE -->
        <!-- <Style x:Key="StileVeicolo" TargetType="{x:Type Button}">
@@ -171,7 +171,7 @@
         </Grid.RowDefinitions>
         
 
-        <Grid x:Name="DynamicGrid" Margin="10,30,10,30" Background="#FF04000F">
+        <Grid x:Name="DynamicGrid" Margin="10,30,10,30" Background="#FFFF">
             <!-- Grid dove generare le col -->
             <!-- Grid dove generare le col -->
         </Grid>

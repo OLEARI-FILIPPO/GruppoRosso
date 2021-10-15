@@ -127,16 +127,16 @@ namespace Garage
                         HorizontalContentAlignment = HorizontalAlignment.Center,
                         VerticalContentAlignment = VerticalAlignment.Center,
 
-                        Style = FindResource("StileVeicolo") as Style,
+                      //  Style = FindResource("StileVeicolo") as Style,
                         Name = "P" + iRow.ToString() + jCol.ToString(),     //nome del bottone ho messo nome del button uguale al contenuto 
 
                         Content = "P" + iRow.ToString() + jCol.ToString(), //assegno come il content il numero della cella che corrisponde alla righa e colonna in cui si trova
                         HorizontalAlignment = HorizontalAlignment.Stretch,
                         VerticalAlignment = VerticalAlignment.Stretch,
-                      //  Background = new SolidColorBrush(Colors.Red),
+                        Background = new SolidColorBrush(Colors.White),
 
-                      //  Height = 100,
-                      //  Width = 100,
+             //           Height = 50,
+            //            Width = 50,
 
 
                     };
@@ -179,8 +179,9 @@ namespace Garage
             MessageBox.Show("Funziona!!!!");
 
             ((Button)sender).Content = "Hello";
+          //  ((Button)sender).C
 
-          //  ((Button)sender).Background = new SolidColorBrush(Colors.Red);
+            ((Button)sender).Background = new SolidColorBrush(Colors.Red);
 
 
 
