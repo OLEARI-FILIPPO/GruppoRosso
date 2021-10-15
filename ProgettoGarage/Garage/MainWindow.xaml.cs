@@ -87,7 +87,7 @@ namespace Garage
                GeneraButton(); //con questo metodo genero i button
 
                checkButtonState = true;
-               Veicoli_metodi.Visibility = Visibility.Visible;
+                Veicoli_metodi.IsEnabled = true;
             }
           
         }
@@ -127,23 +127,27 @@ namespace Garage
                         HorizontalContentAlignment = HorizontalAlignment.Center,
                         VerticalContentAlignment = VerticalAlignment.Center,
 
-                      //  Style = FindResource("StileVeicolo") as Style,
+                        Style = FindResource("StileVeicolo") as Style,
                         Name = "P" + iRow.ToString() + jCol.ToString(),     //nome del bottone ho messo nome del button uguale al contenuto 
 
                         Content = "P" + iRow.ToString() + jCol.ToString(), //assegno come il content il numero della cella che corrisponde alla righa e colonna in cui si trova
                         HorizontalAlignment = HorizontalAlignment.Stretch,
                         VerticalAlignment = VerticalAlignment.Stretch,
                         Background = new SolidColorBrush(Colors.White),
+                        
 
              //           Height = 50,
             //            Width = 50,
-
+                
+                        
 
                     };
 
                   //  ListButton.Add(B);
 
                     B.Click += ParcheggioClick;
+
+                    
            
 
                    
@@ -176,12 +180,12 @@ namespace Garage
 
         private void ParcheggioClick(object sender, RoutedEventArgs e) //questa funzione sarà usato per il evento onclick
         {
-            MessageBox.Show("Funziona!!!!");
+          //  MessageBox.Show("Funziona!!!!");
 
-            ((Button)sender).Content = "Hello";
-          //  ((Button)sender).C
+          //  ((Button)sender).Content = "Hello";
 
-            ((Button)sender).Background = new SolidColorBrush(Colors.Red);
+
+            ((Button)sender).Style = FindResource("VeicoloClick") as Style;
 
 
 

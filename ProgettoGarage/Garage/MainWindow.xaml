@@ -10,27 +10,39 @@
     <Window.Resources>
 
         <Style x:Key="StileVeicolo" TargetType="Button">
-            <Setter Property="BorderBrush">
-                <Setter.Value>
-                    <SolidColorBrush Color="#FF00C3BA"/>
-                </Setter.Value>
-            </Setter>
+           
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0.8" CornerRadius="7">
-                            <Border.Effect>
-                                <DropShadowEffect Color="#FF72FFE5" ShadowDepth="0"/>
-                            </Border.Effect>
-                            <TextBlock Foreground="{TemplateBinding BorderBrush}" Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border CornerRadius="7" Background="#C2C2C2" BorderBrush="Black" BorderThickness="1" >
+                            <ContentPresenter x:Name="contentPresenter"  Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style> 
+           
+     
+        </Style>
+
+        <Style x:Key="VeicoloClick" TargetType="Button">
+
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="7" Background="Red" BorderBrush="Black" BorderThickness="1" >
+                            <ContentPresenter x:Name="contentPresenter"  Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+
+        </Style>
 
         <!-- STILE DEI BOTTONE -->
-       <!-- <Style x:Key="StileVeicolo" TargetType="{x:Type Button}">
+       <!--<Style x:Key="StileVeicolo" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#373737" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="20" />
@@ -185,7 +197,7 @@
 
             <Button x:Name="Button_Conferma" Content="CONFERMA" Height="37" Width="99" FontSize="14" Background="{x:Null}" BorderThickness="2,2,2,2" FontWeight="Normal" Margin="40,0,0,0" Style="{DynamicResource ButtonStyle1}" Click="ConfermaClick"/>
         </StackPanel>
-        <StackPanel x:Name="Veicoli_metodi" Visibility="Hidden" Orientation="Horizontal" HorizontalAlignment="Right" Width="400" VerticalAlignment="Center" Height="100" Grid.Row="1" Margin="0,0,0,0">
+        <StackPanel x:Name="Veicoli_metodi" IsEnabled="False" Orientation="Horizontal" HorizontalAlignment="Right" Width="400" VerticalAlignment="Center" Height="100" Grid.Row="1" Margin="0,0,0,0">
             <StackPanel>
                 <Button Style="{DynamicResource ButtonStyle1}"  x:Name="Button_Entra" Content="ENTRA" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Center" Height="37" Width="123" FontSize="24" Background="{x:Null}" BorderThickness="2,2,2,2"/>
                 <Button x:Name="Button_Esci" Content="ESCI" HorizontalAlignment="Left" VerticalAlignment="Center" Height="37" Width="122" FontSize="24" Background="{x:Null}" BorderThickness="2,2,2,2" Margin="30,10,0,0" Style="{DynamicResource ButtonStyle1}"/>
