@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Garage.Classi
+{
+    class Parcheggio
+    {
+        public string TargaMacchina { get; set; }
+       
+        public bool StatoParcheggio { get; set; }
+
+        private string row { get; set; }
+
+        private string col { get; set; }
+
+        public Parcheggio(string row, string col)
+        {
+            
+            StatoParcheggio = false;
+            this.row = row;
+            this.col = col;
+        }
+
+        public string Entra()
+        {
+
+            string parking;
+
+            parking = "P" + row + col;
+
+            return parking;
+        }
+
+       
+    }
+}

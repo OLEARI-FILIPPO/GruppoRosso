@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Garage.Classi;
 
 namespace Garage
 {
@@ -27,11 +29,18 @@ namespace Garage
             InitializeComponent();
 
             DynamicGrid.ShowGridLines = false;
+            Targa_label.Content = "";
         }
 
         bool checkButtonState = false; //stato di buttone
 
-      //  List<Button> ListButton = new List<Button>();
+        Dictionary<string, Parcheggio> Parcheggi = new Dictionary<string, Parcheggio>();
+      //  List<Button> Bottone = new List<Button>();
+
+
+        Dictionary<string, Parcheggio> AutoParcheggiate = new Dictionary<string, Parcheggio>(); //in dizionario salviami le auto parcheggiate
+
+        List<Button> ListButton = new List<Button>();
 
         private void ConfermaClick(object sender, RoutedEventArgs e) //evento onclick del button conferma
         {
@@ -81,12 +90,14 @@ namespace Garage
             }
             else
             {
-               GeneraRigheDinamiche(row); //con questo metodo genero le righe del grid
-               GeneraColDinamiche(col);   //con questo metodo genero le colonne del grid
+                GeneraRigheDinamiche(row); //con questo metodo genero le righe del grid
+                GeneraColDinamiche(col);   //con questo metodo genero le colonne del grid
 
-               GeneraButton(); //con questo metodo genero i button
+                GeneraButton(); //con questo metodo genero i button
+                CreateParking(row,col);
+               // printDictionary();
 
-               checkButtonState = true;
+                checkButtonState = true;
                 Veicoli_metodi.IsEnabled = true;
             }
           
@@ -118,7 +129,6 @@ namespace Garage
                     Grid.SetColumn(panel, jCol); //setto le colonne
                     Grid.SetRow(panel, iRow); //setto le righe
 
-                    
 
                     //genero il button
                     Button B = new Button()
@@ -134,29 +144,42 @@ namespace Garage
                         HorizontalAlignment = HorizontalAlignment.Stretch,
                         VerticalAlignment = VerticalAlignment.Stretch,
                         Background = new SolidColorBrush(Colors.White),
-                        
-
-             //           Height = 50,
-            //            Width = 50,
-                
-                        
-
+   
                     };
 
-                  //  ListButton.Add(B);
+                    ListButton.Add(B);
 
                     B.Click += ParcheggioClick;
 
-                    
-           
-
-                   
 
                     //Formattazione bottone
                     panel.Child = B;
                     DynamicGrid.Children.Add(panel);
                 }
 
+            }
+        }
+
+        private void CreateParking(int row , int col)
+        {
+
+            Parcheggi.Clear();
+            for (int i = 0; i < row ; i++)
+            {
+                for (int j = 0; j < col; j++)
+                {
+                    Parcheggi.Add("P"+i.ToString()+j.ToString(), new Parcheggio(i.ToString(), j.ToString()));
+                }
+            }
+        }
+
+        private void printDictionary()
+        {
+            foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
+            {
+                //  Console.WriteLine(entry.Value);
+
+                Console.WriteLine("{0}:\t{1}", entry.Key, entry.Value);
             }
         }
 
@@ -180,18 +203,72 @@ namespace Garage
 
         private void ParcheggioClick(object sender, RoutedEventArgs e) //questa funzione sarà usato per il evento onclick
         {
-          //  MessageBox.Show("Funziona!!!!");
 
-          //  ((Button)sender).Content = "Hello";
+             ((Button)sender).Style = FindResource("VeicoloClick") as Style;
 
-
-            ((Button)sender).Style = FindResource("VeicoloClick") as Style;
-
-
-
-            
         }
 
 
+        private bool Availability()
+        {
+            bool available = false;
+
+            foreach ( KeyValuePair<string, Parcheggio> entry in Parcheggi)
+            {
+              //  Console.WriteLine(entry.Value);
+
+                if(entry.Value.StatoParcheggio == false)
+                {
+                    available = true;
+                }
+
+            }
+
+            return available;
+
+        }
+
+        private string Park()
+        {
+            string RowCol = "";
+            foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
+            {
+                //  Console.WriteLine(entry.Value);
+
+                if (entry.Value.StatoParcheggio == false)
+                {
+                    RowCol = entry.Value.Entra();
+                    entry.Value.StatoParcheggio = true;
+                    entry.Value.TargaMacchina = TargaText.Text;
+                    break;
+                }
+
+            }
+            return RowCol;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void onPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+
+        private void Button_EntraClick(object sender, RoutedEventArgs e)
+        {
+            if (Availability() == true)
+            {
+
+                MessageBox.Show("Il tuo parcheggio: " + Park());
+
+            }
+            else
+            {
+                MessageBox.Show("Ci dispiace non ci sono parcheggi disponibili");
+            }
+        }
+
+       
     }
 }

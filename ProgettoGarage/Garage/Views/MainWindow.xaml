@@ -25,6 +25,22 @@
      
         </Style>
 
+        <Style x:Key="StileVeicoloTrue" TargetType="Button">
+
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="7" Background="#C2C2C2" BorderBrush="#00B294" BorderThickness="1" >
+                            <ContentPresenter x:Name="contentPresenter"  Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+
+        </Style>
+
         <Style x:Key="VeicoloClick" TargetType="Button">
 
 
@@ -188,6 +204,7 @@
             <!-- Grid dove generare le col -->
         </Grid>
 
+
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="400" VerticalAlignment="Center" Height="100" Grid.Row="1">
             <Label x:Name="Row_label" Content="Row" Height="32" Width="48" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="Row"  Width="70" Height="28" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
@@ -199,14 +216,17 @@
         </StackPanel>
         <StackPanel x:Name="Veicoli_metodi" IsEnabled="False" Orientation="Horizontal" HorizontalAlignment="Right" Width="400" VerticalAlignment="Center" Height="100" Grid.Row="1" Margin="0,0,0,0">
             <StackPanel>
-                <Button Style="{DynamicResource ButtonStyle1}"  x:Name="Button_Entra" Content="ENTRA" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Center" Height="37" Width="123" FontSize="24" Background="{x:Null}" BorderThickness="2,2,2,2"/>
+                <Button Style="{DynamicResource ButtonStyle1}"  x:Name="Button_Entra" Content="ENTRA" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Center" Height="37" Width="123" FontSize="24" Background="{x:Null}" BorderThickness="2,2,2,2" Click="Button_EntraClick"/>
                 <Button x:Name="Button_Esci" Content="ESCI" HorizontalAlignment="Left" VerticalAlignment="Center" Height="37" Width="122" FontSize="24" Background="{x:Null}" BorderThickness="2,2,2,2" Margin="30,10,0,0" Style="{DynamicResource ButtonStyle1}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="246" HorizontalAlignment="Center">
                 <Label x:Name="Targa_label" Content="Targa" Height="34" Width="74" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                <TextBox Width="120" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <TextBox x:Name="TargaText" Width="120" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
             </StackPanel>
         </StackPanel>
+
+
+
 
 
 
