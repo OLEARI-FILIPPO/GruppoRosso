@@ -35,12 +35,10 @@ namespace Garage
         bool checkButtonState = false; //stato di buttone
 
         Dictionary<string, Parcheggio> Parcheggi = new Dictionary<string, Parcheggio>();
-      //  List<Button> Bottone = new List<Button>();
 
+        Dictionary<string, Button> Buttoni = new Dictionary<string, Button>(); //in dizionario salviami le auto parcheggiate
 
-        Dictionary<string, Parcheggio> AutoParcheggiate = new Dictionary<string, Parcheggio>(); //in dizionario salviami le auto parcheggiate
-
-        List<Button> ListButton = new List<Button>();
+        public object Arrays { get; private set; }
 
         private void ConfermaClick(object sender, RoutedEventArgs e) //evento onclick del button conferma
         {
@@ -105,6 +103,8 @@ namespace Garage
 
         private void GeneraButton()
         {
+
+            Buttoni.Clear();
             int iRow = -1;
             foreach (RowDefinition righe in DynamicGrid.RowDefinitions)
             {
@@ -147,13 +147,15 @@ namespace Garage
    
                     };
 
-                    ListButton.Add(B);
+                    // ListButton.Add(B);
+
+                    Buttoni.Add("P" + iRow.ToString() + jCol.ToString(), B);
 
                     B.Click += ParcheggioClick;
 
-
-                    //Formattazione bottone
                     panel.Child = B;
+
+                    
                     DynamicGrid.Children.Add(panel);
                 }
 
@@ -164,6 +166,8 @@ namespace Garage
         {
 
             Parcheggi.Clear();
+            
+           // Array.Clear(Buttons, 0, Buttons.Length);
             for (int i = 0; i < row ; i++)
             {
                 for (int j = 0; j < col; j++)
@@ -231,12 +235,14 @@ namespace Garage
         private string Park()
         {
             string RowCol = "";
+            int counter = 0;
             foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
             {
                 //  Console.WriteLine(entry.Value);
 
                 if (entry.Value.StatoParcheggio == false)
-                {
+                {   
+
                     RowCol = entry.Value.Entra();
                     entry.Value.StatoParcheggio = true;
                     entry.Value.TargaMacchina = TargaText.Text;
@@ -253,14 +259,21 @@ namespace Garage
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-
-
         private void Button_EntraClick(object sender, RoutedEventArgs e)
         {
             if (Availability() == true)
             {
-
-                MessageBox.Show("Il tuo parcheggio: " + Park());
+                if (TargaText.Text == "")
+                {
+                    MessageBox.Show("Per favore inserire la targa del veicolo","Attenzione!",MessageBoxButton.OK,MessageBoxImage.Error);
+                    
+                }
+                else
+                {
+                    string Parking = Park();
+                    Buttoni[Parking].Style = FindResource("VeicoloClick") as Style;
+                    MessageBox.Show("Il tuo parcheggio: " + Parking);
+                }
 
             }
             else

@@ -30,6 +30,7 @@ namespace Garage.Classi
             string parking;
 
             parking = "P" + row + col;
+           // StatoParcheggio = true;
 
             return parking;
         }
