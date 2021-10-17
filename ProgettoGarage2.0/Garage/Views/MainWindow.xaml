@@ -57,6 +57,22 @@
 
         </Style>
 
+        <Style x:Key="VeicoloClick2" TargetType="Button">
+
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="7" Background="LightSkyBlue" BorderBrush="Black" BorderThickness="1" >
+                            <ContentPresenter x:Name="contentPresenter"  Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+
+        </Style>
+
         <!-- STILE DEI BOTTONE -->
        <!--<Style x:Key="StileVeicolo" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#373737" />
