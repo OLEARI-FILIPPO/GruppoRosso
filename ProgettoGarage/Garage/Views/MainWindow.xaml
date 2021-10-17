@@ -47,7 +47,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="7" Background="Red" BorderBrush="Black" BorderThickness="1" >
+                        <Border CornerRadius="7" Background="#AAE5DB" BorderBrush="Black" BorderThickness="1" >
                             <ContentPresenter x:Name="contentPresenter"  Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                     </ControlTemplate>
