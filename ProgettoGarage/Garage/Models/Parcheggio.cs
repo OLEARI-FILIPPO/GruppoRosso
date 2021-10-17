@@ -13,9 +13,9 @@ namespace Garage.Classi
        
         public bool StatoParcheggio { get; set; }
 
-        private string row { get; set; }
+        public string row { get; set; }
 
-        private string col { get; set; }
+        public string col { get; set; }
 
         public Parcheggio(string row, string col)
         {

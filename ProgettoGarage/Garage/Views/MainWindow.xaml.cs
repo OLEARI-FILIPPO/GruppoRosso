@@ -40,7 +40,8 @@ namespace Garage
 
         Dictionary<string, Button> Buttoni = new Dictionary<string, Button>(); //in dizionario salviami le auto parcheggiate
 
-        Dictionary<string, Button> Buttoni = new Dictionary<string, Button>(); //in questo dizionario salvo i buttoni
+        Dictionary<string, Cronometro> TempoTrascorso = new Dictionary<string, Cronometro>();
+
 
         public object Arrays { get; private set; }
 
@@ -226,15 +227,6 @@ namespace Garage
 
         }
 
-            }
-            return RowCol;
-        }
-
-        private bool Availability()
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         private bool InAvailability()
         {
             bool available = false;
@@ -254,14 +246,14 @@ namespace Garage
 
         }
 
-        private string Park()
+        private string ParkIN()
         {
             string RowCol = "";
-            int counter = 0;
+        //    int counter = 0;
             foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
             {
 
-                if (entry.Value.StatoParcheggio == true)
+                if (entry.Value.StatoParcheggio == false)
                 {
 
                     RowCol = entry.Value.Entra();
@@ -269,39 +261,101 @@ namespace Garage
                     entry.Value.TargaMacchina = TargaText.Text;
                     break;
                 }
-              
+
             }
             return RowCol;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void onPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         private void Button_EntraClick(object sender, RoutedEventArgs e)
         {
-            if (Availability() == true)
+
+           
+            if (InAvailability() == true)
             {
                 if (TargaText.Text == "")
                 {
-                    MessageBox.Show("Per favore inserire la targa del veicolo","Attenzione!",MessageBoxButton.OK,MessageBoxImage.Error);
-                    
+                    MessageBox.Show("Per favore inserire la targa del veicolo", "Attenzione!", MessageBoxButton.OK, MessageBoxImage.Error);
+
                 }
                 else
                 {
-                    string Parking = Park();
+                    string Parking = ParkIN();
                     Buttoni[Parking].Style = FindResource("VeicoloClick") as Style;
                     MessageBox.Show("Il tuo parcheggio: " + Parking);
+                    TargaText.Text = "";
                 }
+
+            }
+
+        }
+
+        private string ParkOUT()
+        {
+            string RowCol = "";
+            //int counter = 0;
+            foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
+            {
+                //  Console.WriteLine(entry.Value);
+
+                if (entry.Value.StatoParcheggio == true)
+                {
+
+                    RowCol = entry.Value.Entra();
+                    int row, col;
+                    row = (int)RowCol[1] - 48;
+                    col = (int)RowCol[2] - 48;
+
+
+
+
+                    foreach (KeyValuePair<string, Cronometro> cronometro in TempoTrascorso)
+                    {
+                        if (cronometro.Key == RowCol)
+                        {
+                            TimeSpan IntervalloParking = cronometro.Value.Esci(row, col);
+                            //cronometro.Value.tempoTrascorso.Stop();
+
+                            MessageBox.Show("La macchina nel parcheggio " + cronometro.Key + " è rimasta per " + IntervalloParking.TotalSeconds + " secondi ", "Cronometro Parcheggio", MessageBoxButton.OK);
+                        }
+                    }
+
+
+
+                    entry.Value.StatoParcheggio = false;
+                    entry.Value.TargaMacchina = "";
+                    break;
+                }
+
+            }
+            return RowCol;
+        }
+
+        private bool OutAvailability()
+        {
+            bool available = false;
+
+            foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
+            {
+                //  Console.WriteLine(entry.Value);
+
+                if (entry.Value.StatoParcheggio == true)
+                {
+                    available = true;
+                }
+
+            }
+
+            return available;
+
+        }
 
         private void Button_EsciClick(object sender, RoutedEventArgs e)
         {
             if(OutAvailability() == true)
             {
                 string Parking = ParkOUT();
-                Buttons[Parking].Style = FindResource("StileVeicolo") as Style;
+                Buttoni[Parking].Style = FindResource("StileVeicolo") as Style;
                 MessageBox.Show("Il parcheggio: " + Parking + " si è liberato");
             }
             else
