@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Garage.Classi;
+using Garage.Models;
 
 namespace Garage
 {
@@ -34,9 +36,9 @@ namespace Garage
 
         bool checkButtonState = false; //stato di buttone
 
-        Dictionary<string, Parcheggio> Parcheggi = new Dictionary<string, Parcheggio>(); //in questo dizionario salvo i parcheggi
+        Dictionary<string, Parcheggio> Parcheggi = new Dictionary<string, Parcheggio>();
 
-        //IdButtone == IdParcheggio
+        Dictionary<string, Button> Buttoni = new Dictionary<string, Button>(); //in dizionario salviami le auto parcheggiate
 
         Dictionary<string, Button> Buttoni = new Dictionary<string, Button>(); //in questo dizionario salvo i buttoni
 
@@ -46,11 +48,11 @@ namespace Garage
         {
             /*
              * 
-             Descrizione Bug: Se l'utente clicca per la seconda volta il button "conferma" con i nuovi i parametri
-                              l'app non cancella i vecchi button ne genera nuovi e li aggiunge agli altri.
+             Descrizione Bug: Se l'utente clicca per la seconda volta il button "conferma" con i nuovi parametri
+                              l'app non cancella i vecchi button ne genera nuovi e gli aggiunge agli altri.
 
-             Soluzione: Creo un bool checkButtonState che di default è false ed diventa true quando il button viene clickato 
-                        quando l'utente clicka il button controllo il suo stato se è vero invoko le invoko la funzione clear() per
+             Soluzione: Creo un bool checkButtonState, che di default è false, e diventa true quando il button viene cliccato. 
+                        Quando l'utente clicca il button controllo il suo stato, se è vero invoco la funzione clear() per
                         cancellare tutto.
 
              */
@@ -94,7 +96,7 @@ namespace Garage
                 GeneraColDinamiche(col);   //con questo metodo genero le colonne del grid
 
                 GeneraButton(); //con questo metodo genero i button
-                CreateParking(row,col); //carico il dizionario
+                CreateParking(row,col);
                // printDictionary();
 
                 checkButtonState = true;
@@ -106,7 +108,7 @@ namespace Garage
         private void GeneraButton()
         {
 
-            Buttoni.Clear(); //pulisco ad ogni generazione il vecchio contenuto del dizionario dei buttoni
+            Buttoni.Clear();
             int iRow = -1;
             foreach (RowDefinition righe in DynamicGrid.RowDefinitions)
             {
@@ -151,7 +153,7 @@ namespace Garage
 
                     // ListButton.Add(B);
 
-                    Buttoni.Add("P" + iRow.ToString() + jCol.ToString(), B); //carico il dizionario
+                    Buttoni.Add("P" + iRow.ToString() + jCol.ToString(), B);
 
                     B.Click += ParcheggioClick; //assegno al buttone l'evento parcheggioClick
 
@@ -163,7 +165,7 @@ namespace Garage
             }
         }
 
-        private void CreateParking(int row , int col) //funzione crea parcheggio serve per riempiere il dizionario parcheggio
+        private void CreateParking(int row , int col)
         {
 
             Parcheggi.Clear();
@@ -173,8 +175,18 @@ namespace Garage
             {
                 for (int j = 0; j < col; j++)
                 {
-                    Parcheggi.Add("P"+i.ToString()+j.ToString(), new Parcheggio(i.ToString(), j.ToString())); //carico il dizionario
+                    Parcheggi.Add("P"+i.ToString()+j.ToString(), new Parcheggio(i.ToString(), j.ToString()));
                 }
+            }
+        }
+
+        private void printDictionary()
+        {
+            foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
+            {
+                //  Console.WriteLine(entry.Value);
+
+                Console.WriteLine("{0}:\t{1}", entry.Key, entry.Value);
             }
         }
 
@@ -196,7 +208,7 @@ namespace Garage
         }
 
 
-        private void ParcheggioClick(object sender, RoutedEventArgs e) //questa funzione sarà usato per il evento onclick
+        private void ParcheggioClick(object sender, RoutedEventArgs e) //questa funzione sarà usata per l' evento onclick
         {
            
             string info = ((Button)sender).Name; //prelevo il nome del buttone che corrisponde alla chiave/id del dizionario "parcheggi"
@@ -212,21 +224,26 @@ namespace Garage
             }
            
 
-            //stampo il messaggio con le informazioni
-          
-
         }
 
+            }
+            return RowCol;
+        }
 
-        private bool Availability()  //la funzione per controllare la disponibilità del parcheggio
+        private bool Availability()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private bool InAvailability()
         {
             bool available = false;
 
-            foreach ( KeyValuePair<string, Parcheggio> entry in Parcheggi)
+            foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
             {
-              //  Console.WriteLine(entry.Value);
+                //  Console.WriteLine(entry.Value);
 
-                if(entry.Value.StatoParcheggio == false) 
+                if(entry.Value.StatoParcheggio == false)
                 {
                     available = true; //se ci sono i parcheggi disponibile cambio lo stato del buttone
                 }
@@ -237,70 +254,61 @@ namespace Garage
 
         }
 
-        private bool checkNumberPlate() //controlla se la targa non sia stata inserita per la seconda volta
-        {
-
-            bool yesOrnot = false;
-            foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
-            {
-
-                if (entry.Value.TargaMacchina == TargaText.Text)
-                {
-
-                    yesOrnot = true;
-                    break; //appena trova la targa esce dal ciclo
-                }
-
-            }
-
-            return yesOrnot;
-
-
-        }
-
-        private string Park() //la funzione per parcheggiare la macchina
+        private string Park()
         {
             string RowCol = "";
-           // int counter = 0;
+            int counter = 0;
             foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
             {
 
-                if (entry.Value.StatoParcheggio == false)
-                {   
+                if (entry.Value.StatoParcheggio == true)
+                {
 
-                    RowCol = entry.Value.Entra(); //chiamo il metodo entra() della classe parcheggio che ritorna la riga e colonna
-                    entry.Value.StatoParcheggio = true; //cambio lo stato del parcheggio
-                    entry.Value.TargaMacchina = TargaText.Text; //prendo la targa del veicolo
-                    break; //al primo parcheggio disponibile esco dal ciclo
+                    RowCol = entry.Value.Entra();
+                    entry.Value.StatoParcheggio = true;
+                    entry.Value.TargaMacchina = TargaText.Text;
+                    break;
                 }
               
             }
             return RowCol;
         }
 
-  
-        private void Button_EntraClick(object sender, RoutedEventArgs e) //Evento del buttone entra
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void onPropertyChanged(string propertyName)
         {
-            if (Availability() == true) //prima controllo se c'è il parcheggio disponibile altrimenti genero il messaggio di errore
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void Button_EntraClick(object sender, RoutedEventArgs e)
+        {
+            if (Availability() == true)
             {
-                if (TargaText.Text == "") //controllo che il textbox sia riempito se no genero il messaggio di errore
+                if (TargaText.Text == "")
                 {
                     MessageBox.Show("Per favore inserire la targa del veicolo","Attenzione!",MessageBoxButton.OK,MessageBoxImage.Error);
                     
                 }
                 else
                 {
-                    string Parking = Park(); //prendo la riga e colonna 
-                    Buttoni[Parking].Style = FindResource("VeicoloClick") as Style; //cambio il colore del parcheggio
-                    MessageBox.Show("Il tuo parcheggio: " + Parking); //stampo il messaggio 
+                    string Parking = Park();
+                    Buttoni[Parking].Style = FindResource("VeicoloClick") as Style;
+                    MessageBox.Show("Il tuo parcheggio: " + Parking);
                 }
 
+        private void Button_EsciClick(object sender, RoutedEventArgs e)
+        {
+            if(OutAvailability() == true)
+            {
+                string Parking = ParkOUT();
+                Buttons[Parking].Style = FindResource("StileVeicolo") as Style;
+                MessageBox.Show("Il parcheggio: " + Parking + " si è liberato");
             }
             else
             {
-                 MessageBox.Show("Non ci sono parcheggi disponibili", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                MessageBox.Show("Ci dispiace non ci sono parcheggi disponibili");
             }
+
         }
 
        
