@@ -44,7 +44,7 @@ namespace Garage
 
         List<string> targhe = new List<string>();
 
-        public event EventHandler MouseHover;
+
 
         private void ConfermaClick(object sender, RoutedEventArgs e) //evento onclick del button conferma
         {
@@ -269,7 +269,9 @@ namespace Garage
 
             if(oldKeyButton != ((Button)sender).Name)
             {
-                Buttoni[oldKeyButton].Style = FindResource("StileVeicolo") as Style;
+
+                  Buttoni[oldKeyButton].Style = FindResource("StileVeicolo") as Style;
+              
             }
 
             Enterclicked = true;
@@ -317,33 +319,32 @@ namespace Garage
         {
 
             string targa = TargaText.Text;
+            string enterRis  = Parcheggi[IdButton].Entra();
 
             if (targa == "" || targa.Length != 7 || checkNumberPlate() == true)
             {
                 MessageBox.Show("La targa già stata inserita oppure non è valida (Contralle se sette caratteri)", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else if(Enterclicked == false)
+            else if (Enterclicked == false)
             {
                 MessageBox.Show("Non hai selezionato un parcheggio", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else if (InAvailability() == true && Parcheggi[IdButton].StatoParcheggio == false && Enterclicked == true)
+            else if (InAvailability() == true && enterRis != null && Enterclicked == true)
             {
                 //MessageBox.Show("Il parcheggio è libero", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                Parcheggi[IdButton].StatoParcheggio = true;
                 Parcheggi[IdButton].TargaMacchina = TargaText.Text;
-                string pos = parkIN();
+                Parcheggi[IdButton].StatoParcheggio = true;
                 Buttoni[IdButton].Style = FindResource("VeicoloClick") as Style;
 
-
-                MessageBox.Show("Il tuo parcheggio: " + pos, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Il tuo parcheggio: " + enterRis, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
                 targhe.Add(targa);
                 
+
                 // TargaText.Text = "";
                 Enterclicked = false;
 
             }
-            else if (Parcheggi[IdButton].StatoParcheggio == true)
+            else if (enterRis == null)
             {
                 MessageBox.Show("Parcheggio occupato dal " + Parcheggi[IdButton].TargaMacchina, "Error!", MessageBoxButton.OK, MessageBoxImage.Information);
                 Buttoni[IdButton].Style = FindResource("VeicoloClick") as Style;
@@ -353,14 +354,9 @@ namespace Garage
 
                 MessageBox.Show("Non ci sono parcheggi disponibili", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
             listaAuto.ItemsSource = targhe;
             listaAuto.Items.Refresh();
-        }
-
-        private string parkIN()
-        {
-            string Pos = Parcheggi[IdButton].Entra();
-            return Pos;
         }
 
         /*private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -375,26 +371,44 @@ namespace Garage
 
 
 
+
         private void Button_EsciClick(object sender, RoutedEventArgs e)
         {
-            if (Enterclicked == true)
+            string time = Parcheggi[IdOut].Esci();
+
+
+            if (Enterclicked == true && time == null)
             {
+                MessageBox.Show("Selezionare un parcheggio oppure il parcheggio è occupato", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
                 Parcheggi[IdOut].StatoParcheggio = false;
                 Parcheggi[IdOut].TargaMacchina = "";
                 Buttoni[IdOut].Style = FindResource("StileVeicolo") as Style;
+
                 targhe.Remove(Parcheggi[IdOut].TargaMacchina);
                 
 
-                MessageBox.Show("La macchina è rimasta per " + Parcheggi[IdOut].Esci(),"Info",MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("La macchina è rimasta per " + time,"Info",MessageBoxButton.OK, MessageBoxImage.Information);
+
             }
             else
             {
-                MessageBox.Show("Selezionare un parcheggio","Info" ,MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult res = MessageBox.Show("Vuoi cancellare la macchina della posizione " + Buttoni[IdOut].Name, "Conferma", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (res == MessageBoxResult.Yes)
+                {
+                    Parcheggi[IdOut].StatoParcheggio = false;
+                    Parcheggi[IdOut].TargaMacchina = "";
+                    Buttoni[IdOut].Style = FindResource("StileVeicolo") as Style;
+                    MessageBox.Show("La macchina è rimasta per " + time, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Non è stato effettuato nessun cambiamento", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             listaAuto.ItemsSource = targhe;
             listaAuto.Items.Refresh();
         }
 
-       
     }
 }
