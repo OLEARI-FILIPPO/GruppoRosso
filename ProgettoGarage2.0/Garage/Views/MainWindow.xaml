@@ -251,7 +251,9 @@
         
         <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label x:Name="RicercaTarga_tb" Content="Ricerca una targa" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,0,0" Grid.Column="1"/>
-            <DataGrid></DataGrid>
+            <ListView x:Name="listaAuto"  Height="225" FontSize="18">
+                
+            </ListView>
         </StackPanel>
 
 
