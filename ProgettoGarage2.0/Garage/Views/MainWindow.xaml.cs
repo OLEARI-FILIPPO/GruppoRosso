@@ -226,20 +226,33 @@ namespace Garage
 
         }
 
-        
 
+        string oldKeyButton = "";
+        int counter = 0;
         private void ParcheggioClick(object sender, RoutedEventArgs e) //questa funzione sarà usata per l' evento onclick
         {
            
             IdButton = ((Button)sender).Name; //prelevo il nome del buttone che corrisponde alla chiave/id del dizionario "parcheggi"
 
             IdOut = ((Button)sender).Name;
-           
-           
+            counter++;
+
+            if (counter == 1)
+            {
+                oldKeyButton = ((Button)sender).Name;
+            }
+
+            if(oldKeyButton != ((Button)sender).Name)
+            {
+                Buttoni[oldKeyButton].Style = FindResource("StileVeicolo") as Style;
+            }
+
             Enterclicked = true;
 
             ((Button)sender).Style = FindResource("VeicoloClick2") as Style;
 
+            //  
+            oldKeyButton = ((Button)sender).Name;
 
         }
 
@@ -248,16 +261,17 @@ namespace Garage
 
         private bool checkNumberPlate()
         {
-            string Targa = Parcheggi[IdButton].TargaMacchina;
+            string Targa = TargaText.Text;
 
             bool check = false;
+
             foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
             {
                 //  Console.WriteLine(entry.Value);
 
                 if (entry.Value.TargaMacchina == Targa)
                 {
-                    check= true; //se ci sono i parcheggi disponibile cambio lo stato del buttone
+                    check = true; 
                     break;
                 }
 
@@ -277,7 +291,7 @@ namespace Garage
             {
                 MessageBox.Show("Inserire la targa", "Error!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else if (checkNumberPlate()==true)
+            else if (checkNumberPlate() == true)
             {
                 MessageBox.Show("Targa già inserita, inserire una nuova targa" , "Error!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
