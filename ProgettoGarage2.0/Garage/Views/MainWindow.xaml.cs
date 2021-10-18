@@ -335,7 +335,7 @@ namespace Garage
                 //MessageBox.Show("Il parcheggio è libero", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 Parcheggi[IdButton].StatoParcheggio = true;
-                Parcheggi[IdButton].TargaMacchina = TargaText.Text;
+                Parcheggi[IdButton].TargaMacchina = TargaText.Text.ToUpper();
                 string pos = parkIN();
                 Buttoni[IdButton].Style = FindResource("VeicoloClick") as Style;
               //  oldNumerPlate = TargaText.Text; //server per controllare che l'utente non abbia inserito lo stessa della prima
