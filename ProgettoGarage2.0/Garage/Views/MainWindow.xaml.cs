@@ -254,7 +254,7 @@ namespace Garage
         int counter = 0;
         private void ParcheggioClick(object sender, RoutedEventArgs e) //questa funzione sarà usata per l' evento onclick
         {
-           
+            
             IdButton = ((Button)sender).Name; //prelevo il nome del buttone che corrisponde alla chiave/id del dizionario "parcheggi"
 
             IdOut = ((Button)sender).Name;
@@ -286,7 +286,6 @@ namespace Garage
             }
         }
 
-  
 
 
         private bool checkNumberPlate()
@@ -330,11 +329,13 @@ namespace Garage
                 //MessageBox.Show("Il parcheggio è libero", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 Parcheggi[IdButton].StatoParcheggio = true;
-                Parcheggi[IdButton].TargaMacchina = TargaText.Text.ToUpper();
+                Parcheggi[IdButton].TargaMacchina = TargaText.Text;
                 string pos = parkIN();
                 Buttoni[IdButton].Style = FindResource("VeicoloClick") as Style;
+               // Buttoni[IdButton].Content = TargaText.Text.ToUpper();
               //  oldNumerPlate = TargaText.Text; //server per controllare che l'utente non abbia inserito lo stessa della prima
                 MessageBox.Show("Il tuo parcheggio: " + pos, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+               // TargaText.Text = "";
                 Enterclicked = false;
 
             }
