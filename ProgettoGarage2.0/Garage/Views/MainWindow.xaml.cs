@@ -43,10 +43,6 @@ namespace Garage
 
         Dictionary<string, Button> Buttoni = new Dictionary<string, Button>(); //in dizionario salviami le auto parcheggiate
 
-        Dictionary<string, Cronometro> TempoTrascorso = new Dictionary<string, Cronometro>();
-
-
-        public object Arrays { get; private set; }
 
         private void ConfermaClick(object sender, RoutedEventArgs e) //evento onclick del button conferma
         {
@@ -230,6 +226,8 @@ namespace Garage
 
         }
 
+        
+
         private void ParcheggioClick(object sender, RoutedEventArgs e) //questa funzione sarà usata per l' evento onclick
         {
            
@@ -247,36 +245,41 @@ namespace Garage
 
   
 
-        private string ParkIN()
+
+        private bool checkNumberPlate()
         {
-            string RowCol = "";
-        //    int counter = 0;
+            string Targa = Parcheggi[IdButton].TargaMacchina;
+
+            bool check = false;
             foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
             {
-                    RowCol = entry.Value.Entra();
-                    entry.Value.StatoParcheggio = true;
-                    entry.Value.TargaMacchina = TargaText.Text;
+                //  Console.WriteLine(entry.Value);
+
+                if (entry.Value.TargaMacchina == Targa)
+                {
+                    check= true; //se ci sono i parcheggi disponibile cambio lo stato del buttone
                     break;
+                }
 
             }
-            return RowCol;
+
+            return check;
+
+
         }
-
-
-        string oldNumerPlate = "0";
 
         private void Button_EntraClick(object sender, RoutedEventArgs e)
         {
 
             //   string Targa = Parcheggi[IdButton].TargaMacchina;
 
-            if (TargaText.Text =="")
+            if (TargaText.Text == "")
             {
                 MessageBox.Show("Inserire la targa", "Error!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else if (TargaText.Text == oldNumerPlate)
+            else if (checkNumberPlate()==true)
             {
-                MessageBox.Show("Inserire una nuova targa" , "Error!", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Targa già inserita, inserire una nuova targa" , "Error!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else if(Enterclicked == false)
             {
@@ -290,8 +293,9 @@ namespace Garage
                 Parcheggi[IdButton].TargaMacchina = TargaText.Text;
                 string pos = parkIN();
                 Buttoni[IdButton].Style = FindResource("VeicoloClick") as Style;
-                oldNumerPlate = TargaText.Text; //server per controllare che l'utente non abbia inserito lo stessa della prima
+              //  oldNumerPlate = TargaText.Text; //server per controllare che l'utente non abbia inserito lo stessa della prima
                 MessageBox.Show("Il tuo parcheggio: " + pos, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                Enterclicked = false;
 
             }
             else if (Parcheggi[IdButton].StatoParcheggio == true)
@@ -316,67 +320,6 @@ namespace Garage
         }
 
       
-
-        private string ParkOUT()
-        {
-            string RowCol = "";
-            //int counter = 0;
-            foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
-            {
-                //  Console.WriteLine(entry.Value);
-
-                if (entry.Value.StatoParcheggio == true)
-                {
-
-                    RowCol = entry.Value.Entra();
-                    int row, col;
-                    row = (int)RowCol[1] - 48;
-                    col = (int)RowCol[2] - 48;
-
-
-
-
-                    foreach (KeyValuePair<string, Cronometro> cronometro in TempoTrascorso)
-                    {
-                        if (cronometro.Key == RowCol)
-                        {
-                            TimeSpan IntervalloParking = cronometro.Value.Esci(row, col);
-                            //cronometro.Value.tempoTrascorso.Stop();
-
-                            MessageBox.Show("La macchina nel parcheggio " + cronometro.Key + " è rimasta per " + IntervalloParking.TotalSeconds + " secondi ", "Cronometro Parcheggio", MessageBoxButton.OK);
-                        }
-                    }
-
-
-                    entry.Value.StatoParcheggio = false;
-                    entry.Value.TargaMacchina = "";
-                    break;
-                }
-
-            }
-            return RowCol;
-        }
-
-        private bool OutAvailability()
-        {
-            bool available = false;
-
-            foreach (KeyValuePair<string, Parcheggio> entry in Parcheggi)
-            {
-                //  Console.WriteLine(entry.Value);
-
-                if (entry.Value.StatoParcheggio == true)
-                {
-                    available = true;
-                }
-
-            }
-
-            return available;
-
-        }
-
-
         
         private void Button_EsciClick(object sender, RoutedEventArgs e)
         {
