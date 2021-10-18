@@ -42,6 +42,8 @@ namespace Garage
 
         Dictionary<string, Button> Buttoni = new Dictionary<string, Button>(); //in dizionario salviami le auto parcheggiate
 
+        List<string> targhe = new List<string>();
+
         public event EventHandler MouseHover;
 
         private void ConfermaClick(object sender, RoutedEventArgs e) //evento onclick del button conferma
@@ -335,7 +337,9 @@ namespace Garage
 
 
                 MessageBox.Show("Il tuo parcheggio: " + pos, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-               // TargaText.Text = "";
+                targhe.Add(targa);
+                
+                // TargaText.Text = "";
                 Enterclicked = false;
 
             }
@@ -349,9 +353,8 @@ namespace Garage
 
                 MessageBox.Show("Non ci sono parcheggi disponibili", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-          
-
-
+            listaAuto.ItemsSource = targhe;
+            listaAuto.Items.Refresh();
         }
 
         private string parkIN()
@@ -360,8 +363,18 @@ namespace Garage
             return Pos;
         }
 
-      
-        
+        /*private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as ListViewItem;
+            if (item != null && item.IsSelected)
+            {
+                item.Style = FindResource("VeicoloClick2") as Style;
+
+            }
+        }*/
+
+
+
         private void Button_EsciClick(object sender, RoutedEventArgs e)
         {
             if (Enterclicked == true)
@@ -369,13 +382,17 @@ namespace Garage
                 Parcheggi[IdOut].StatoParcheggio = false;
                 Parcheggi[IdOut].TargaMacchina = "";
                 Buttoni[IdOut].Style = FindResource("StileVeicolo") as Style;
+                targhe.Remove(Parcheggi[IdOut].TargaMacchina);
+                
+
                 MessageBox.Show("La macchina è rimasta per " + Parcheggi[IdOut].Esci(),"Info",MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
                 MessageBox.Show("Selezionare un parcheggio","Info" ,MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
+            listaAuto.ItemsSource = targhe;
+            listaAuto.Items.Refresh();
         }
 
        
