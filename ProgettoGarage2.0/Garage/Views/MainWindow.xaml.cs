@@ -15,7 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Garage.Classi;
-using Garage.Models;
 
 namespace Garage
 {
@@ -316,15 +315,11 @@ namespace Garage
         private void Button_EntraClick(object sender, RoutedEventArgs e)
         {
 
-            //   string Targa = Parcheggi[IdButton].TargaMacchina;
+            string targa = TargaText.Text;
 
-            if (TargaText.Text == "")
+            if (targa == "" || targa.Length != 7 || checkNumberPlate() == true)
             {
-                MessageBox.Show("Inserire la targa", "Error!", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else if (checkNumberPlate() == true)
-            {
-                MessageBox.Show("Targa già inserita, inserire una nuova targa" , "Error!", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Inserire una targa valida", "Error!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else if(Enterclicked == false)
             {
