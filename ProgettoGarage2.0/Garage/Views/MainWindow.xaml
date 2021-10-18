@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:Garage"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    
+
     <Window.Resources>
 
         <Style x:Key="StileVeicolo" TargetType="Button">
-           
+
 
             <Setter Property="Template">
                 <Setter.Value>
@@ -21,8 +21,8 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-           
-     
+
+
         </Style>
 
         <Style x:Key="StileVeicoloTrue" TargetType="Button">
@@ -74,7 +74,7 @@
         </Style>
 
         <!-- STILE DEI BOTTONE -->
-       <!--<Style x:Key="StileVeicolo" TargetType="{x:Type Button}">
+        <!--<Style x:Key="StileVeicolo" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#373737" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="20" />
@@ -206,14 +206,18 @@
     </Window.Resources>
 
 
-       
+
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="100px" />
         </Grid.RowDefinitions>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="643*" />
+            <ColumnDefinition Width="157*" />
+        </Grid.ColumnDefinitions>
+
 
         <Grid x:Name="DynamicGrid" Margin="10,30,10,30" Background="#FFFF">
             <!-- Grid dove generare le col -->
@@ -221,24 +225,33 @@
         </Grid>
 
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="400" VerticalAlignment="Center" Height="100" Grid.Row="1">
-            <Label x:Name="Row_label" Content="Row" Height="32" Width="48" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="Row"  Width="70" Height="28" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="400" VerticalAlignment="Center" Height="100" Grid.Row="1">
+                <Label x:Name="Row_label" Content="Row" Height="32" Width="48" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="Row"  Width="70" Height="28" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
-            <Label x:Name="Column_label" Content="Col" Height="32" Width="48" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox x:Name="Col" Width="70" Height="28" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Style="{DynamicResource TextBoxStyle1}" />
+                <Label x:Name="Column_label" Content="Col" Height="32" Width="48" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox x:Name="Col" Width="70" Height="28" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Style="{DynamicResource TextBoxStyle1}" />
 
-            <Button x:Name="Button_Conferma" Content="CONFERMA" Height="37" Width="99" FontSize="14" Background="{x:Null}" BorderThickness="2,2,2,2" FontWeight="Normal" Margin="40,0,0,0" Style="{DynamicResource ButtonStyle1}" Click="ConfermaClick"/>
+                <Button x:Name="Button_Conferma" Content="CONFERMA" Height="37" Width="99" FontSize="14" Background="{x:Null}" BorderThickness="2,2,2,2" FontWeight="Normal" Margin="40,0,0,0" Style="{DynamicResource ButtonStyle1}" Click="ConfermaClick"/>
+            </StackPanel>
+
+            <StackPanel x:Name="Veicoli_metodi" IsEnabled="False" Orientation="Horizontal" HorizontalAlignment="Left" Width="400" VerticalAlignment="Center" Height="100" Grid.Row="1" Margin="6,0,0,0">
+                <StackPanel>
+                    <Button Style="{DynamicResource ButtonStyle1}"  x:Name="Button_Entra" Content="ENTRA" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Center" Height="37" Width="123" FontSize="24" Background="{x:Null}" BorderThickness="2,2,2,2" Click="Button_EntraClick"/>
+                    <Button Style="{DynamicResource ButtonStyle1}"  x:Name="Button_Esci" Content="ESCI" HorizontalAlignment="Left" VerticalAlignment="Center" Height="37" Width="122" FontSize="24" Background="{x:Null}" BorderThickness="2,2,2,2" Margin="30,10,0,0"  Click="Button_EsciClick"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="246" HorizontalAlignment="Center">
+                    <Label x:Name="Targa_label" Content="Targa" Height="34" Width="74" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="TargaText" CharacterCasing="Upper"  Width="120" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+
         </StackPanel>
-        <StackPanel x:Name="Veicoli_metodi" IsEnabled="False" Orientation="Horizontal" HorizontalAlignment="Right" Width="400" VerticalAlignment="Center" Height="100" Grid.Row="1" Margin="0,0,0,0">
-            <StackPanel>
-                <Button Style="{DynamicResource ButtonStyle1}"  x:Name="Button_Entra" Content="ENTRA" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Center" Height="37" Width="123" FontSize="24" Background="{x:Null}" BorderThickness="2,2,2,2" Click="Button_EntraClick"/>
-                <Button Style="{DynamicResource ButtonStyle1}"  x:Name="Button_Esci" Content="ESCI" HorizontalAlignment="Left" VerticalAlignment="Center" Height="37" Width="122" FontSize="24" Background="{x:Null}" BorderThickness="2,2,2,2" Margin="30,10,0,0"  Click="Button_EsciClick"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="246" HorizontalAlignment="Center">
-                <Label x:Name="Targa_label" Content="Targa" Height="34" Width="74" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                <TextBox x:Name="TargaText" CharacterCasing="Upper"  Width="120" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
-            </StackPanel>
+        
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label x:Name="RicercaTarga_tb" Content="Ricerca una targa" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,0,0" Grid.Column="1"/>
+            <DataGrid></DataGrid>
         </StackPanel>
 
 
