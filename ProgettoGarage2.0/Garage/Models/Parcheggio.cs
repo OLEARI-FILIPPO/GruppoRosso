@@ -22,7 +22,7 @@ namespace Garage.Classi
 
         public Parcheggio(string row, string col)
         {
-            
+
             StatoParcheggio = false;
             this.row = row;
             this.col = col;
@@ -33,25 +33,49 @@ namespace Garage.Classi
         {
 
             string parking;
-            parking = "P" + row + col;
-            // StatoParcheggio = true;
 
-            TotTime.Start();
-            //Thread.Sleep(10000);
+            if (StatoParcheggio == false)
+            {
+                parking = "P" + row + col;
+                // StatoParcheggio = true;
 
-            return parking;
+                TotTime.Start();
+                //Thread.Sleep(10000);
 
-           
-            
+                return parking;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+
         }
 
-        public TimeSpan Esci()
+        public string Esci()
         {
-            TotTime.Stop();
 
-            TimeSpan ts = TotTime.Elapsed;
 
-            return ts;
+            if (StatoParcheggio == true)
+            {
+                TotTime.Stop();
+
+                TimeSpan ts = TotTime.Elapsed;
+
+
+                return ts.ToString();
+            }
+            else
+            {
+                return null;
+            }
+
+            // StatoParcheggio = true;
+
+
+
         }
 
 
