@@ -43,6 +43,7 @@ namespace Garage
 
         Dictionary<string, Button> Buttoni = new Dictionary<string, Button>(); //in dizionario salviami le auto parcheggiate
 
+        public event EventHandler MouseHover;
 
         private void ConfermaClick(object sender, RoutedEventArgs e) //evento onclick del button conferma
         {
@@ -157,11 +158,34 @@ namespace Garage
 
                     B.Click += ParcheggioClick; //assegno al buttone l'evento parcheggioClick
 
+                    B.MouseMove += MoveMouse;
+
+                    B.MouseLeave += LeaveMouse;
+
                     panel.Child = B;
 
                     DynamicGrid.Children.Add(panel);
                 }
 
+            }
+        }
+
+        private void LeaveMouse(object sender, MouseEventArgs e)
+        {
+        
+            ((Button)sender).Content = ((Button)sender).Name;
+            
+        }
+
+        private void MoveMouse(object sender, MouseEventArgs e)
+        {
+            if(Parcheggi[((Button)sender).Name].StatoParcheggio == false)
+            {
+                ((Button)sender).Content = "Vuoto";
+            }
+            else
+            {
+                ((Button)sender).Content = Parcheggi[((Button)sender).Name].TargaMacchina;
             }
         }
 
@@ -253,7 +277,14 @@ namespace Garage
 
             //  
             oldKeyButton = ((Button)sender).Name;
-
+            if (Parcheggi[IdButton].StatoParcheggio == false)
+            {
+                Buttoni[IdButton].Content = "Vuoto";
+            }
+            else
+            {
+                Buttoni[IdButton].Content = Parcheggi[IdButton].TargaMacchina;
+            }
         }
 
   
