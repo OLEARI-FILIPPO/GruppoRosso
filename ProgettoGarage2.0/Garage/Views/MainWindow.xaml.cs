@@ -319,7 +319,7 @@ namespace Garage
 
             if (targa == "" || targa.Length != 7 || checkNumberPlate() == true)
             {
-                MessageBox.Show("Inserire una targa valida", "Error!", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("La targa già stata inserita oppure non è valida (Contralle se sette caratteri)", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else if(Enterclicked == false)
             {
@@ -369,6 +369,10 @@ namespace Garage
                 Parcheggi[IdOut].TargaMacchina = "";
                 Buttoni[IdOut].Style = FindResource("StileVeicolo") as Style;
                 MessageBox.Show("La macchina è rimasta per " + Parcheggi[IdOut].Esci(),"Info",MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Selezionare un parcheggio","Info" ,MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
