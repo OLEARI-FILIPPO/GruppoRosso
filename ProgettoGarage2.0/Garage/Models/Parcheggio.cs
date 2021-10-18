@@ -47,17 +47,11 @@ namespace Garage.Classi
 
         public TimeSpan Esci()
         {
-
-
-            // StatoParcheggio = true;
-
             TotTime.Stop();
 
             TimeSpan ts = TotTime.Elapsed;
 
             return ts;
-
-
         }
 
 

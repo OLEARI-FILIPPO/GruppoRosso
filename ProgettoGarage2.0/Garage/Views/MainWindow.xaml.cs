@@ -332,8 +332,8 @@ namespace Garage
                 Parcheggi[IdButton].TargaMacchina = TargaText.Text;
                 string pos = parkIN();
                 Buttoni[IdButton].Style = FindResource("VeicoloClick") as Style;
-               // Buttoni[IdButton].Content = TargaText.Text.ToUpper();
-              //  oldNumerPlate = TargaText.Text; //server per controllare che l'utente non abbia inserito lo stessa della prima
+
+
                 MessageBox.Show("Il tuo parcheggio: " + pos, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
                // TargaText.Text = "";
                 Enterclicked = false;

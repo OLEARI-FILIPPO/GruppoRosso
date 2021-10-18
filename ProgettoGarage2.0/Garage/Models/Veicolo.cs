@@ -8,7 +8,6 @@ namespace Garage.Classi
 {
     class Veicolo
     {
-        private Persona P { get; set; }
 
         private string _targa;
         public string Targa
