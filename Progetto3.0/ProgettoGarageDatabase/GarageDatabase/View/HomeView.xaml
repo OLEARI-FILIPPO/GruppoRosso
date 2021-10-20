@@ -7,39 +7,35 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <TextBlock Text="Homepage"
+        <TextBlock Text="Nome del piano"
                    Foreground="White"
                    FontSize="33"
                    HorizontalAlignment="Left"
                    Margin="0,0,0,20"/>
 
 
-        <StackPanel Orientation="Horizontal">
-            <Border Width="400"
-                    Height="200">
-
-                <!-- BACKGOURND SFUMATO DA DUE COLORI -->
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#577399" Offset="0.0"/>
-                        <GradientStop Color="#476894" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-
-                <Border.Clip>
-                    <RectangleGeometry RadiusX="10" 
-                                       RadiusY="10"
-                                       Rect="0,0,400,200"/>
-                </Border.Clip>
+        <StackPanel Orientation="Horizontal" Height="262" Width="720">
+            <Border VerticalAlignment="Stretch">
 
                 <Grid>
+
+                    <!-- BACKGOURND SFUMATO DA DUE COLORI -->
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                            <GradientStop Color="#577399" Offset="0.0"/>
+                            <GradientStop Color="#476894" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <!--    Qui va la generazione della griglia dinamica 
+                            Il text block va poi tolto
+                    -->
                     <StackPanel>
-                        <TextBlock Text="Qui va la griglia con le auto" 
-                                   Margin="20,10,10,0"
-                                   FontSize="20"/>
+                        <TextBlock Text="Qui va la griglia con le auto Si                             dovrebbe ridimensionare dasola" 
+                                   Margin="0,0,0,0"
+                                   FontSize="20" HorizontalAlignment="Center" Height="263"/>
                     </StackPanel>
                 </Grid>
-                
+
             </Border>
         </StackPanel>
     </StackPanel>

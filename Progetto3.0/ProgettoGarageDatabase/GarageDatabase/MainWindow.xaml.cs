@@ -29,5 +29,27 @@ namespace GarageDatabase
         {
             Close();
         }
+
+ 
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)(ToggleButton.IsChecked == true))
+            {
+                Titolo.Text = "GARAGE";
+                Aggiungi_Piano.Content = "AGGIUNGI PIANO";
+                Rimuovi_Piano.Content = "RIMUOVI PIANO";
+                ToggleButton.Margin = new Thickness() { Left = 50 };
+                ColonnaMenu.Width = new GridLength(250);
+            }
+            else
+            {
+                Titolo.Text = "";
+                Aggiungi_Piano.Content = "";
+                Rimuovi_Piano.Content = "";
+                ToggleButton.Margin = new Thickness() { Left = 5, Right = 5, Top = 0, Bottom = 0 } ;
+                ColonnaMenu.Width = new GridLength(75);
+            }
+        }
     }
 }
