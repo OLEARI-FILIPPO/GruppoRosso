@@ -1,4 +1,10 @@
+# IGNORA I FOLDER ELENCATI
+
 ProgettoGarage/
 ProgettoGarage2.0/
+
+#IGNORA I FOLDER DI QUALSIASI LIVELLO DI 
+#SUBDIRECTORY BIN E OBJ
+
 **/bin/
 **/obj/
