@@ -1,0 +1,59 @@
+USE 
+GestioneParcheggio
+GO
+
+CREATE TABLE Persona(
+	
+	IdPersona	BIGINT			IDENTITY CONSTRAINT PK_Persona_IdPersona PRIMARY KEY,
+	Nome			NVARCHAR(100)	NOT NULL,
+	Cognome		NVARCHAR(100)	NOT NULL,
+	Dob			DATETIME			NOT NULL
+
+)
+
+CREATE TABLE Automobile(
+	
+	IdAuto		BIGINT			IDENTITY CONSTRAINT PK_Automobile_IdAuto PRIMARY KEY,
+	Marca			NVARCHAR(100)	NOT NULL,
+	Modello		VARCHAR(20)	   NOT NULL,
+	Targa			CHAR(7)			NOT NULL,
+	IdPersona	BIGINT			NOT NULL CONSTRAINT FK_Automobile_IdPersona_Persona FOREIGN KEY REFERENCES Persona,
+
+)
+
+CREATE TABLE Piano(
+
+	IdPiano	BIGINT			IDENTITY CONSTRAINT PK_Piano_IdPiano PRIMARY KEY,
+	Piano		TINYINT			NOT NULL,
+	Nome		NVARCHAR(50)	NOT NULL
+
+)
+
+
+CREATE TABLE Parcheggio(
+	
+	IdParcheggio CHAR(3) CONSTRAINT PK_Parcheggio_IdParcheggio PRIMARY KEY,
+	Stato			 BIT		NOT NULL,
+	IdPiano		 BIGINT	CONSTRAINT FK_Parcheggio_IdPiano_Piano FOREIGN KEY REFERENCES Piano,
+	Incasso		 DECIMAL	NOT NULL,
+	RowPark		 TINYINT	NOT NULL,
+	ColPark		 TINYINT	NOT NULL
+)
+
+
+CREATE TABLE Storico(
+	
+	IdStorico		BIGINT	IDENTITY	CONSTRAINT PK_Storico_IdStorico PRIMARY KEY,
+	IdParcheggio	CHAR(3)	CONSTRAINT FK_Storico_IdParcheggio_Parcheggio FOREIGN KEY REFERENCES Parcheggio,
+	
+	IdAuto			BIGINT	CONSTRAINT FK_Storico_IdAuto_Auto	FOREIGN KEY REFERENCES Automobile,
+	DataIngresso	DATETIME	NOT NULL,
+	Giorno			DATETIME	NOT NULL
+)
+
+
+
+
+
+
+
