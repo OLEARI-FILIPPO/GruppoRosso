@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GarageDatabase.View;
 
 namespace GarageDatabase.ModelView
 { 
     class MainViewModel : ObservableObject
     {
-        public HomeViewModel HomeVM { get; set; }
+        public HomeView HomeVM { get; set; }
+
         private object currentView;
 
         public object CurrentView
@@ -20,7 +22,7 @@ namespace GarageDatabase.ModelView
 
         public MainViewModel()
         {
-            HomeVM = new HomeViewModel();
+            HomeVM = new HomeView();
             CurrentView = HomeVM;
         }
     }

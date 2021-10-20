@@ -79,7 +79,7 @@
 
             <ContentControl Grid.Row="1"
                             Grid.Column="2"
-                            Margin="25,10,10,10"
+                            Margin="25,24,30,24"
                             Content="{Binding CurrentView}">
 
                 <ContentControl.DataContext>
