@@ -7,60 +7,65 @@
         xmlns:viewModel="clr-namespace:GarageDatabase.ModelView"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="920"
-        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
         >
 
-    <Border Background="#222537"
+    <Border x:Name="MenuGarage" Background="#222537"
             CornerRadius="20">
 
-        <Grid>
+        <Grid x:Name="GridPagina">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="280"/>
-                <ColumnDefinition />
-                <ColumnDefinition Width="159*"/>
+                <ColumnDefinition x:Name="ColonnaMenu" Width="75"/>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="791*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
 
+            <Border Grid.Column="0" Grid.RowSpan="2"
+                    Background="#22202f"
+                    >
+                <!-- ADD SHADOW EFFECT -->
+
+            </Border>
+
 
             <!--        LOGO    E TOGGLE BUTTON    -->
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="GARAGE"
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <TextBlock x:Name="Titolo"
                    VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
+                   HorizontalAlignment="Stretch"
                    Foreground="White"
-                   FontSize="30" Height="39" Width="112" Margin="20,0,0,0">
+                   FontSize="30"/>
 
-                </TextBlock>
-                <ToggleButton Width="100" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="60,0,0,0" FontSize="22">
-                    <ToggleButton.Background>
 
-                        <ImageBrush ImageSource="Immagini/tgBtn_default.png"
-                                            Stretch="None"/>
+                <ToggleButton x:Name="ToggleButton" Width="65" 
+                              VerticalAlignment="Stretch" FontSize="22" 
+                              Height="59" 
+                              HorizontalAlignment="Stretch"
+                              Margin="5,0,5,0" 
+                              Click="ToggleButton_Click" Background="White"/>
 
-                    </ToggleButton.Background>
-                </ToggleButton>
             </StackPanel>
 
 
             <!--    MENU    -->
             <StackPanel Grid.Row="1">
-                <RadioButton Content="AGGIUNGI PIANO"
-                             Height="50"
-                             FontSize="20"
+                <RadioButton x:Name="Aggiungi_Piano" Content=""
+                             FontSize="25"
                              Foreground="White"
+                             Margin="0,20,0,0"
                              Style="{StaticResource TemaMenuBottone}"/>
 
-                <RadioButton Content="RIMUOVI PIANO"
-                             Height="50"
-                             FontSize="20"
+                <RadioButton x:Name="Rimuovi_Piano" Content=""
+                             FontSize="25"
                              Foreground="White"
+                             Margin="0,20,0,0"
                              Style="{StaticResource TemaMenuBottone}"/>
             </StackPanel>
 
@@ -74,7 +79,7 @@
 
             <ContentControl Grid.Row="1"
                             Grid.Column="2"
-                            Margin="5,10,10,10"
+                            Margin="25,10,10,10"
                             Content="{Binding CurrentView}">
 
                 <ContentControl.DataContext>
@@ -82,12 +87,11 @@
                 </ContentControl.DataContext>
             </ContentControl>
 
-            <Button Content="CHIUDI" 
+            <Button x:Name="CloseWindow" Content="CHIUDI" 
                     Grid.Column="2" 
-                    HorizontalAlignment="Left" 
-                    Margin="587,0,0,0" 
+                    HorizontalAlignment="Right" 
+                    Margin="0,10,30,0" 
                     VerticalAlignment="Top" 
-                    Height="54" Width="49" 
                     Click="Button_Click" 
                     FontSize="20" 
                     FontWeight="Bold"
