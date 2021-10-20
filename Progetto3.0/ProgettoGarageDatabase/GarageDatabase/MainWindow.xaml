@@ -19,9 +19,9 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="7*" />
-                <ColumnDefinition Width="53*"/>
+                <ColumnDefinition Width="280"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="159*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
@@ -29,14 +29,25 @@
             </Grid.RowDefinitions>
 
 
-            <!--        LOGO        -->
-            <TextBlock Text="GARAGE"
+            <!--        LOGO    E TOGGLE BUTTON    -->
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="GARAGE"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Foreground="White"
-                   FontSize="30">
+                   FontSize="30" Height="39" Width="112" Margin="20,0,0,0">
 
-            </TextBlock>
+                </TextBlock>
+                <ToggleButton Width="100" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="60,0,0,0" FontSize="22">
+                    <ToggleButton.Background>
+
+                        <ImageBrush ImageSource="Immagini/tgBtn_default.png"
+                                            Stretch="None"/>
+
+                    </ToggleButton.Background>
+                </ToggleButton>
+            </StackPanel>
+
 
             <!--    MENU    -->
             <StackPanel Grid.Row="1">
@@ -54,17 +65,16 @@
             </StackPanel>
 
             <TextBox Width="250"
-                     Height="40"
                      VerticalContentAlignment="Center"
                      HorizontalAlignment="Left"
-                     Margin="5,18,0,17" 
+                     Margin="0,18,0,17" 
                      
-                     Grid.Column="1" 
-                     Style="{StaticResource TemaTextboxRicerca}" Grid.ColumnSpan="2"/>
+                     Grid.Column="2" 
+                     Style="{StaticResource TemaTextboxRicerca}"/>
 
             <ContentControl Grid.Row="1"
-                            Grid.Column="1"
-                            Margin="10,10,10,10" Grid.ColumnSpan="2"
+                            Grid.Column="2"
+                            Margin="5,10,10,10"
                             Content="{Binding CurrentView}">
 
                 <ContentControl.DataContext>
