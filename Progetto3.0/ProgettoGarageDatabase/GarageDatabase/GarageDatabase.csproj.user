@@ -21,10 +21,16 @@
     <Page Update="Temi\TemaBottoneChiusura.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Temi\TemaMenuBottoneHome.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Temi\TemaMenuBottone.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Temi\TemaTextBoxRicerca.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Temi\TemaToggleButton.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\GestioneView.xaml">

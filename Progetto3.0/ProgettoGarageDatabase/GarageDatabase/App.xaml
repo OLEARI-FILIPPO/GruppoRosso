@@ -2,14 +2,16 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:GarageDatabase"
-             xmlns:viewModel="clr-namespace:GarageDatabase.ModelView"
+             xmlns:viewModel ="clr-namespace:GarageDatabase.ModelView"
              xmlns:view="clr-namespace:GarageDatabase.View"
              StartupUri="MainWindow.xaml">
     
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Temi/TemaToggleButton.xaml" />
                 <ResourceDictionary Source="Temi/TemaMenuBottone.xaml" />
+                <ResourceDictionary Source="Temi/TemaMenuBottoneHome.xaml" />
                 <ResourceDictionary Source="Temi/TemaBottoneChiusura.xaml" />
                 <ResourceDictionary Source="Temi/TemaTextboxRicerca.xaml" />
             </ResourceDictionary.MergedDictionaries>

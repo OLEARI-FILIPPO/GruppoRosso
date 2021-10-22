@@ -39,13 +39,18 @@ namespace GarageDatabase
         {
             if ((bool)(ToggleButton.IsChecked == true))
             {
+                menuToggleIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.Close; ;
                 Titolo.Text = "GARAGE";
                 GestionePiani.Content = "Gestione Piani";
+                Home.Content = "Home";
                 ToggleButton.Margin = new Thickness() { Left = 50 };
                 ColonnaMenu.Width = new GridLength(250);
             }
             else
             {
+                menuToggleIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.Bars; ;
+
+                Home.Content = "";
                 Titolo.Text = "";
                 GestionePiani.Content = "";
                 ToggleButton.Margin = new Thickness() { Left = 5, Right = 5, Top = 0, Bottom = 0 };
@@ -74,6 +79,30 @@ namespace GarageDatabase
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void GestioneButton_Checked(object sender, RoutedEventArgs e)
+        {
+            GestionePiani1.Visibility = Visibility.Visible;
+            HomeParcheggio.Visibility = Visibility.Hidden;
+
+        }
+
+        private void HomeButton_Checked(object sender, RoutedEventArgs e)
+        {
+            GestionePiani1.Visibility = Visibility.Hidden;
+            HomeParcheggio.Visibility = Visibility.Visible;
+
+        }
+
+        private void ToggleButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void ToggleButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

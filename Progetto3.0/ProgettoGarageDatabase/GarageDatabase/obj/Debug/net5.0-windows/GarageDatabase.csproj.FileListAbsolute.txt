@@ -89,3 +89,5 @@ C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageData
 C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\GarageDatabase.csproj.CopyComplete
 C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\View\GestioneView.g.cs
 C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\View\GestioneView.baml
+C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\Temi\TemaMenuBottoneHome.baml
+C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\Temi\TemaToggleButton.baml

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GarageDatabase"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:viewModel="clr-namespace:GarageDatabase.ModelView" 
-        xmlns:interactivity="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic.Core" 
+        xmlns:interactivity="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic.Core" d:DataContext="{d:DesignInstance Type=viewModel:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="920"
         WindowStartupLocation="CenterScreen"
@@ -15,6 +15,9 @@
         WindowStyle="None"
         >
 
+    <Window.DataContext>
+        <viewModel:MainViewModel />
+    </Window.DataContext>
 
     <Border x:Name="MenuGarage" Background="#222537"
             CornerRadius="20">
@@ -52,7 +55,12 @@
                               Height="59" 
                               HorizontalAlignment="Stretch"
                               Margin="5,0,5,0" 
-                              Click="ToggleButton_Click" Background="White"/>
+                              Background="Transparent"
+                              BorderBrush="Transparent"
+                              Style="{StaticResource TemaToggleMenu}"  
+                              Click="ToggleButton_Click" MouseEnter="ToggleButton_MouseEnter" MouseLeave="ToggleButton_MouseLeave" >
+                    <fa:FontAwesome x:Name="menuToggleIcon" Icon="Bars" Foreground="White" FontSize="45"/>
+                </ToggleButton>
 
             </StackPanel>
 
@@ -60,11 +68,39 @@
             <!--    MENU    -->
             <!---->
 
+            <ContentControl x:Name="HomeParcheggio" Grid.Row="1"
+                            Grid.Column="2"
+                            Margin="25,24,30,24"
+                            Content="{Binding CurrentView}">
+
+                <ContentControl.DataContext>
+                    <viewModel:MainViewModel/>
+                </ContentControl.DataContext>
+            </ContentControl>
+
+            <ContentControl x:Name="GestionePiani1" Grid.Row="1"
+                            Grid.Column="2"
+                            Margin="25,24,30,24"
+                            Content="{Binding GestioneVM}"
+                            Visibility="Hidden">
+
+                <ContentControl.DataContext>
+                    <viewModel:MainViewModel/>
+                </ContentControl.DataContext>
+            </ContentControl>
+
+
+
+
+
+
+
             <RadioButton x:Name="HomeButton"    Grid.Row="1" 
                             VerticalAlignment="Top" 
                             HorizontalAlignment="Stretch" 
-                            Style="{StaticResource TemaMenuBottone}"
-                            Command="{Binding UpdateViewCommand}" CommandParameter="Home">
+                            Style="{StaticResource TemaMenuBottoneHome}"
+                            IsChecked="True"
+                         Command="{Binding HomeVM}" Checked="HomeButton_Checked" Margin="0,30,0,0">
 
                 <StackPanel x:Name="HomeSP"
                             Orientation="Horizontal"
@@ -73,18 +109,23 @@
 
                     <fa:ImageAwesome x:Name="HomeIcon"/>
 
-                    <Label x:Name="Home"/>
+                    <Label x:Name="Home"
+                           FontSize="22"
+                         Foreground="White"
+                           VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalContentAlignment="Right" Margin="20,0,0,20"
+                           />
 
 
                 </StackPanel>
-
             </RadioButton>
+
+
 
             <RadioButton x:Name="GestioneButton"    Grid.Row="1" 
                             VerticalAlignment="Top" 
-                            Margin="0,60,0,0"
+                            Margin="0,120,0,0"
                             Style="{StaticResource TemaMenuBottone}"
-                            Command="{Binding UpdateViewCommand}" CommandParameter="Gestione">
+                            Command="{Binding HomeVM}" Checked="GestioneButton_Checked">
 
                 <StackPanel x:Name="GestioneSP"
                             Orientation="Horizontal"
@@ -93,7 +134,10 @@
 
                     <fa:ImageAwesome x:Name="GestionePianiIcon"/>
 
-                    <Label x:Name="GestionePiani"/>
+                    <Label x:Name="GestionePiani"
+                           FontSize="22"
+                           VerticalContentAlignment="Top"
+                         Foreground="White" VerticalAlignment="Stretch" HorizontalContentAlignment="Right" Margin="20,0,0,20"/>
 
 
                 </StackPanel>
@@ -112,15 +156,7 @@
 
 
 
-            <ContentControl Grid.Row="1"
-                            Grid.Column="2"
-                            Margin="25,24,30,24"
-                            Content="{Binding CurrentView}">
-
-                <ContentControl.DataContext>
-                    <viewModel:MainViewModel/>
-                </ContentControl.DataContext>
-            </ContentControl> 
+            
 
               
             <Button x:Name="CloseWindow" Content="CHIUDI" 

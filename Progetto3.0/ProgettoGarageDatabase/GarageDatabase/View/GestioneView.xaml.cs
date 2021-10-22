@@ -18,7 +18,7 @@ namespace GarageDatabase.View
     /// <summary>
     /// Logica di interazione per GestioneView.xaml
     /// </summary>
-    public partial class GestioneView : Page
+    public partial class GestioneView : UserControl
     {
         public GestioneView()
         {

@@ -20,7 +20,7 @@
                                  Icon="PencilSquareOutline" 
                                  Foreground="White" />
 
-                            <Label x:Name="GestionePiani" Content="" 
+                            <Label x:Name="GestionePiani" Content="{TemplateBinding Content}" 
                                      HorizontalContentAlignment="Center"
                                      VerticalContentAlignment="Center"
                                      VerticalAlignment="Center"
