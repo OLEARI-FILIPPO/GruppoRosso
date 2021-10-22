@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "sC1C8933E1NItQZmIbMFq4nRbtyhh9wPiGeYmLF6iOdSnt8Ga1Q5WYi7fTIZG5PbA16o5R6S4elOaGrW6TWzbg==",
+  "dgSpecHash": "h14KaerUJZCQHZcsZkzFPrpzS813ALPaD1rph9EB48+YPvxTRyYwwx+CfUcu9nF7Sk1nzlKibGU/N3t/Wh/+/Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Local\\Desktop\\GruppoRosso\\Progetto3.0\\ProgettoGarageDatabase\\GarageDatabase\\GarageDatabase.csproj",
+  "projectFilePath": "C:\\Users\\local\\OneDrive\\Desktop\\GruppoRosso\\Progetto3.0\\ProgettoGarageDatabase\\GarageDatabase\\GarageDatabase.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Local\\.nuget\\packages\\fontawesome.wpf\\4.7.0.9\\fontawesome.wpf.4.7.0.9.nupkg.sha512"
+    "C:\\Users\\local\\.nuget\\packages\\fontawesome.wpf\\4.7.0.9\\fontawesome.wpf.4.7.0.9.nupkg.sha512"
   ],
   "logs": [
     {
