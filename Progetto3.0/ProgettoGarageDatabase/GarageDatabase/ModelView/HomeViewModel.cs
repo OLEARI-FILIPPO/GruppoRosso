@@ -23,10 +23,5 @@ namespace GarageDatabase.ModelView
        {
 
        }
-
-       private void GeneraRigheDinamiche()
-       {
-            
-       }
     }
 }

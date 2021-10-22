@@ -38,21 +38,6 @@
 
                 <Grid x:Name="DynamicGrid" Width="711" Height="377">
 
-                    <!-- BACKGOURND SFUMATO DA DUE COLORI 
-                    <Grid.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#577399" Offset="0.0"/>
-                            <GradientStop Color="#476894" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Grid.Background>-->
-                    <!--    Qui va la generazione della griglia dinamica 
-                            Il text block va poi tolto
-                    
-                    <StackPanel>
-                        <TextBlock Text="Qui va la griglia con le auto Si                             dovrebbe ridimensionare dasola" 
-                                   Margin="0,0,0,0"
-                                   FontSize="20" HorizontalAlignment="Center" Height="263"/>
-                    </StackPanel>-->
                 </Grid>
 
             </Border>

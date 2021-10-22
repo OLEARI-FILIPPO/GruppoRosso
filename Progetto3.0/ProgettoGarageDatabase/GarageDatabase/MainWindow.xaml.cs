@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GarageDatabase.ModelView;
+using GarageDatabase.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace GarageDatabase
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new HomeViewModel();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -30,26 +33,47 @@ namespace GarageDatabase
             Close();
         }
 
- 
+
 
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)(ToggleButton.IsChecked == true))
             {
                 Titolo.Text = "GARAGE";
-                Aggiungi_Piano.Content = "AGGIUNGI PIANO";
-                Rimuovi_Piano.Content = "RIMUOVI PIANO";
+                GestionePiani.Content = "Gestione Piani";
                 ToggleButton.Margin = new Thickness() { Left = 50 };
                 ColonnaMenu.Width = new GridLength(250);
             }
             else
             {
                 Titolo.Text = "";
-                Aggiungi_Piano.Content = "";
-                Rimuovi_Piano.Content = "";
-                ToggleButton.Margin = new Thickness() { Left = 5, Right = 5, Top = 0, Bottom = 0 } ;
+                GestionePiani.Content = "";
+                ToggleButton.Margin = new Thickness() { Left = 5, Right = 5, Top = 0, Bottom = 0 };
                 ColonnaMenu.Width = new GridLength(75);
             }
+        }
+
+        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
+        {
+            GestionePianiIcon.Foreground = new SolidColorBrush(Color.FromRgb(0, 233, 225));
+            GestionePiani.Foreground = new SolidColorBrush(Color.FromRgb(0, 233, 225));
+            GestioneSP.Cursor = Cursors.Hand;
+        }
+
+        private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
+        {
+            GestionePianiIcon.Foreground = Brushes.White;
+            GestionePiani.Foreground = Brushes.White;
+            GestioneSP.Cursor = Cursors.Arrow;
+        }
+
+        private void GestioneSP_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

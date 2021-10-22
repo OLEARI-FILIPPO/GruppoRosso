@@ -1,8 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "9KIrWWRAaNRLrUNDinNxbwqETWgk8hHCaOCBF7MrXH90xN9Dn8a42kYdnZlOYIv+fSHngwcyF2V0cB1VG7s2Hw==",
+  "dgSpecHash": "sC1C8933E1NItQZmIbMFq4nRbtyhh9wPiGeYmLF6iOdSnt8Ga1Q5WYi7fTIZG5PbA16o5R6S4elOaGrW6TWzbg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Local\\Desktop\\GruppoRosso\\Progetto3.0\\ProgettoGarageDatabase\\GarageDatabase\\GarageDatabase.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "expectedPackageFiles": [
+    "C:\\Users\\Local\\.nuget\\packages\\fontawesome.wpf\\4.7.0.9\\fontawesome.wpf.4.7.0.9.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Il pacchetto 'FontAwesome.WPF 4.7.0.9' è stato ripristinato mediante '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' e non mediante il framework di destinazione del progetto 'net5.0-windows7.0'. Questo pacchetto potrebbe non essere completamente compatibile con il progetto.",
+      "libraryId": "FontAwesome.WPF",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    }
+  ]
 }

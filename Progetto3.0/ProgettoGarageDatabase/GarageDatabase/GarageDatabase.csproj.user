@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\GestioneView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\HomeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Temi\TemaTextBoxRicerca.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\GestioneView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\HomeView.xaml">

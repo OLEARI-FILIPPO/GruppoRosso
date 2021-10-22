@@ -5,6 +5,7 @@
              xmlns:viewModel="clr-namespace:GarageDatabase.ModelView"
              xmlns:view="clr-namespace:GarageDatabase.View"
              StartupUri="MainWindow.xaml">
+    
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,7 +17,11 @@
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type viewModel:GestioneViewModel}">
+                <view:GestioneView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:fa="http://schemas.fontawesome.io/icons/">
 
     <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
            TargetType="{x:Type RadioButton}"
@@ -13,11 +13,20 @@
                               HorizontalAlignment="Stretch"
                               
                               Background="{TemplateBinding Background}">
+                            <fa:ImageAwesome x:Name="GestionePianiIcon" Width="45" Height="45" 
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"
+                                 Margin="15,0,0,0"
+                                 Icon="PencilSquareOutline" 
+                                 Foreground="White" />
 
-                            <TextBlock Text="{TemplateBinding Property=Content}" 
-                                       VerticalAlignment="Center" 
-                                       Margin="25,0,0,0"
-                                       />
+                            <Label x:Name="GestionePiani" Content="" 
+                                     HorizontalContentAlignment="Center"
+                                     VerticalContentAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Background="Transparent"
+                                     Foreground="White"
+                                     FontSize="25"/>
 
                         </Grid>
                     </ControlTemplate>

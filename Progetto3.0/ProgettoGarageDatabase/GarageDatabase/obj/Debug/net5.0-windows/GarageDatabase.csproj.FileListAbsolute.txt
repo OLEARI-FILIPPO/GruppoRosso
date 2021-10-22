@@ -85,3 +85,7 @@ C:\Users\local\OneDrive\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\G
 C:\Users\local\OneDrive\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\ref\GarageDatabase.dll
 C:\Users\local\OneDrive\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\GarageDatabase.pdb
 C:\Users\local\OneDrive\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\GarageDatabase.genruntimeconfig.cache
+C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\bin\Debug\net5.0-windows\FontAwesome.WPF.dll
+C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\GarageDatabase.csproj.CopyComplete
+C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\View\GestioneView.g.cs
+C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\View\GestioneView.baml

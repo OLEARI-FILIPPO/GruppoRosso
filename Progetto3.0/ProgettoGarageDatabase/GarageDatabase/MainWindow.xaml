@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GarageDatabase"
-        xmlns:viewModel="clr-namespace:GarageDatabase.ModelView"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:viewModel="clr-namespace:GarageDatabase.ModelView" 
+        xmlns:interactivity="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic.Core" 
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="920"
         WindowStartupLocation="CenterScreen"
@@ -12,6 +14,7 @@
         AllowsTransparency="True"
         WindowStyle="None"
         >
+
 
     <Border x:Name="MenuGarage" Background="#222537"
             CornerRadius="20">
@@ -55,19 +58,48 @@
 
 
             <!--    MENU    -->
-            <StackPanel Grid.Row="1">
-                <RadioButton x:Name="Aggiungi_Piano" Content=""
-                             FontSize="25"
-                             Foreground="White"
-                             Margin="0,20,0,0"
-                             Style="{StaticResource TemaMenuBottone}"/>
+            <!---->
 
-                <RadioButton x:Name="Rimuovi_Piano" Content=""
-                             FontSize="25"
-                             Foreground="White"
-                             Margin="0,20,0,0"
-                             Style="{StaticResource TemaMenuBottone}"/>
-            </StackPanel>
+            <RadioButton x:Name="HomeButton"    Grid.Row="1" 
+                            VerticalAlignment="Top" 
+                            HorizontalAlignment="Stretch" 
+                            Style="{StaticResource TemaMenuBottone}"
+                            Command="{Binding UpdateViewCommand}" CommandParameter="Home">
+
+                <StackPanel x:Name="HomeSP"
+                            Orientation="Horizontal"
+                            Margin="0,20,0,0" 
+                            >
+
+                    <fa:ImageAwesome x:Name="HomeIcon"/>
+
+                    <Label x:Name="Home"/>
+
+
+                </StackPanel>
+
+            </RadioButton>
+
+            <RadioButton x:Name="GestioneButton"    Grid.Row="1" 
+                            VerticalAlignment="Top" 
+                            Margin="0,60,0,0"
+                            Style="{StaticResource TemaMenuBottone}"
+                            Command="{Binding UpdateViewCommand}" CommandParameter="Gestione">
+
+                <StackPanel x:Name="GestioneSP"
+                            Orientation="Horizontal"
+                            Margin="0,20,0,0" 
+                            >
+
+                    <fa:ImageAwesome x:Name="GestionePianiIcon"/>
+
+                    <Label x:Name="GestionePiani"/>
+
+
+                </StackPanel>
+
+            </RadioButton>
+
 
             <TextBox Width="250"
                      VerticalContentAlignment="Center"
@@ -77,6 +109,9 @@
                      Grid.Column="2" 
                      Style="{StaticResource TemaTextboxRicerca}"/>
 
+
+
+
             <ContentControl Grid.Row="1"
                             Grid.Column="2"
                             Margin="25,24,30,24"
@@ -85,14 +120,15 @@
                 <ContentControl.DataContext>
                     <viewModel:MainViewModel/>
                 </ContentControl.DataContext>
-            </ContentControl>
+            </ContentControl> 
 
+              
             <Button x:Name="CloseWindow" Content="CHIUDI" 
                     Grid.Column="2" 
                     HorizontalAlignment="Right" 
                     Margin="0,10,30,0" 
                     VerticalAlignment="Top" 
-                    Click="Button_Click" 
+                    Click="Button_Click"
                     FontSize="20" 
                     FontWeight="Bold"
                     Style="{StaticResource TemaChiusuraBottone}"/>
