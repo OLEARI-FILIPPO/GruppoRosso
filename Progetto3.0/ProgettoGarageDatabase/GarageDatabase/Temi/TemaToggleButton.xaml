@@ -6,13 +6,10 @@
            x:Key="TemaToggleMenu">
 
     <Style.Triggers>
-        <Trigger Property="IsMouseOver" Value="true">
+            <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Background" Value="Black"/>
             </Trigger>
-            <Trigger Property="IsMouseOver" Value="False">
-                <Setter Property="Background" Value="Transparent"/>
-            </Trigger>
-    </Style.Triggers>
+        </Style.Triggers>
 
     </Style>
 </ResourceDictionary>
