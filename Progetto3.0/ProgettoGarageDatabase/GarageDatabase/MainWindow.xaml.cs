@@ -1,19 +1,9 @@
 ﻿using GarageDatabase.ModelView;
-using GarageDatabase.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Haley.MVVM.Services;
+using Haley.Abstractions;
 
 namespace GarageDatabase
 {
@@ -22,15 +12,25 @@ namespace GarageDatabase
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IDialogService ds;
         public MainWindow()
         {
             InitializeComponent();
+            ds = new DialogService();
             DataContext = new HomeViewModel();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            var result = ds.ShowDialog("Attenzione!", "Terminare l'esecuzione?", 
+                                        Haley.Enums.NotificationIcon.Warning, 
+                                        Haley.Enums.DialogMode.Confirmation, blurWindows: true);
+
+            var res = result.DialogResult;
+            if (res.HasValue  && res.Value  == true)
+            {
+                Close();
+            }
         }
 
 

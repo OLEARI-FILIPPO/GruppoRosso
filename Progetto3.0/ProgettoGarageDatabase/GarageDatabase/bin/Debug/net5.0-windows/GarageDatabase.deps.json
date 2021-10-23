@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v5.0": {
       "GarageDatabase/1.0.0": {
         "dependencies": {
-          "FontAwesome.WPF": "4.7.0.9"
+          "FontAwesome.WPF": "4.7.0.9",
+          "Haley.MVVM": "6.0.4"
         },
         "runtime": {
           "GarageDatabase.dll": {}
@@ -19,6 +20,100 @@
           "lib/net40/FontAwesome.WPF.dll": {
             "assemblyVersion": "4.7.0.37774",
             "fileVersion": "4.7.0.9"
+          }
+        }
+      },
+      "Haley.Extensions/2.0.2": {
+        "dependencies": {
+          "protobuf-net": "3.0.73"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Haley.Extensions.dll": {
+            "assemblyVersion": "2.0.1.0",
+            "fileVersion": "2.0.1.0"
+          }
+        }
+      },
+      "Haley.IOC/3.0.2": {
+        "dependencies": {
+          "Haley.Extensions": "2.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Haley.IOC.dll": {
+            "assemblyVersion": "2.0.2.0",
+            "fileVersion": "2.0.2.0"
+          }
+        }
+      },
+      "Haley.MVVM/6.0.4": {
+        "dependencies": {
+          "Haley.Extensions": "2.0.2",
+          "Haley.IOC": "3.0.2",
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.31",
+          "System.Drawing.Common": "5.0.2"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Haley.MVVM.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.0.2.0"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/5.0.0": {},
+      "Microsoft.Win32.SystemEvents/5.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0"
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+        "runtime": {
+          "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.31.10800"
+          }
+        }
+      },
+      "protobuf-net/3.0.73": {
+        "dependencies": {
+          "protobuf-net.Core": "3.0.73"
+        },
+        "runtime": {
+          "lib/net5.0/protobuf-net.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.73.29921"
+          }
+        }
+      },
+      "protobuf-net.Core/3.0.73": {
+        "runtime": {
+          "lib/net5.0/protobuf-net.Core.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.73.29921"
+          }
+        }
+      },
+      "System.Drawing.Common/5.0.2": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "5.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "5.0.0.2",
+            "fileVersion": "5.0.421.11614"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.2",
+            "fileVersion": "5.0.421.11614"
+          },
+          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.2",
+            "fileVersion": "5.0.421.11614"
           }
         }
       }
@@ -36,6 +131,69 @@
       "sha512": "sha512-SXE080rnyWMm9Dt0BZzMxh89/o9teuSaqL1N+0O/XM/F/HU8JuZA4XaEKxjBigwZPHHU3/udTa0QMYCHkmH43Q==",
       "path": "fontawesome.wpf/4.7.0.9",
       "hashPath": "fontawesome.wpf.4.7.0.9.nupkg.sha512"
+    },
+    "Haley.Extensions/2.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CfDGzsZ7nimszSTtbMP0Qs8rRD0gpsAjQIcBdRLj7WidraigiURPQe3yACCaJrrjkziC1GVwREsC1aOUIaqNEA==",
+      "path": "haley.extensions/2.0.2",
+      "hashPath": "haley.extensions.2.0.2.nupkg.sha512"
+    },
+    "Haley.IOC/3.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sYIxNhc78QPg6FC3/VDLXZlBdBrH0FVowicv4Fy1i7l8F8vYpjIA2kYDILtJdVY+ESjnpndkgkuLjF/qWW9w4w==",
+      "path": "haley.ioc/3.0.2",
+      "hashPath": "haley.ioc.3.0.2.nupkg.sha512"
+    },
+    "Haley.MVVM/6.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YMJlk9las/JZ+G9KSSbtpd8RxPyY9CnhQOESgAlXvvDctmz/Y7Hvc58KVPYVO1GN4EkQA950Gkwj+dR9forvUw==",
+      "path": "haley.mvvm/6.0.4",
+      "hashPath": "haley.mvvm.6.0.4.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+      "path": "microsoft.netcore.platforms/5.0.0",
+      "hashPath": "microsoft.netcore.platforms.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
+      "path": "microsoft.win32.systemevents/5.0.0",
+      "hashPath": "microsoft.win32.systemevents.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.31": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LZpuf82ACZWldmfMuv3CTUMDh3o0xo0uHUaybR5HgqVLDBJJ9RZLykplQ/bTJd0/VDt3EhD4iDgUgbdIUAM+Kg==",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.31",
+      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512"
+    },
+    "protobuf-net/3.0.73": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rcqDbIs7bmsctQk7Jo0zAI5BBDyjlKqzGqCHbtlHKRDyJ5AFPBClS3G5KvITS52hSoobUTWW5NsUmB7Dt/0iaA==",
+      "path": "protobuf-net/3.0.73",
+      "hashPath": "protobuf-net.3.0.73.nupkg.sha512"
+    },
+    "protobuf-net.Core/3.0.73": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UKQlQY4STocSar2WoGA2mJegx3E4rTOa+ur2O8YKmhpJII/VfLILkVAF7Cyko2qljFAZ0CuOTy5uNu5JE/ZQ2A==",
+      "path": "protobuf-net.core/3.0.73",
+      "hashPath": "protobuf-net.core.3.0.73.nupkg.sha512"
+    },
+    "System.Drawing.Common/5.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rvr/M1WPf24ljpvvrVd74+NdjRUJu1bBkspkZcnzSZnmAUQWSvanlQ0k/hVHk+cHufZbZfu7vOh/vYc0q5Uu/A==",
+      "path": "system.drawing.common/5.0.2",
+      "hashPath": "system.drawing.common.5.0.2.nupkg.sha512"
     }
   }
 }

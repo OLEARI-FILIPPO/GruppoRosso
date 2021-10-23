@@ -18,11 +18,16 @@
                         <Grid VerticalAlignment="Stretch"
                               HorizontalAlignment="Stretch"
                               Background="Transparent">
+                            <Border Background="White"
+                                    CornerRadius="30"
+                                    Width="40"
+                                    />
 
                             <TextBlock Text="X" 
                                        VerticalAlignment="Center" 
-                                       Foreground="Red"
-                                       FontSize="40"
+                                       Foreground="Black"
+                                       FontSize="30"
+                                       Margin="9,0,0,2"
                                        />
 
                         </Grid>

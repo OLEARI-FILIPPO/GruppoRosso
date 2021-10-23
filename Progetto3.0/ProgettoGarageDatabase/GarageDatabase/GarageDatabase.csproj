@@ -13,9 +13,14 @@
 
   <ItemGroup>
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+    <PackageReference Include="Haley.MVVM" Version="6.0.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Temi\TemaBottoneInserimento.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Temi\TemaMenuBottoneHome.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>

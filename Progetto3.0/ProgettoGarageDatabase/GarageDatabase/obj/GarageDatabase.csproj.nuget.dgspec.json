@@ -47,6 +47,10 @@
             "FontAwesome.WPF": {
               "target": "Package",
               "version": "[4.7.0.9, )"
+            },
+            "Haley.MVVM": {
+              "target": "Package",
+              "version": "[6.0.4, )"
             }
           },
           "imports": [
