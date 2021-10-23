@@ -88,7 +88,6 @@ C:\Users\local\OneDrive\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\G
 C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\bin\Debug\net5.0-windows\FontAwesome.WPF.dll
 C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\GarageDatabase.csproj.CopyComplete
 C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\View\GestioneView.g.cs
-C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\View\GestioneView.baml
 C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\Temi\TemaMenuBottoneHome.baml
 C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\Temi\TemaToggleButton.baml
 C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\Temi\TemaBottoneInserimento.baml
@@ -102,3 +101,4 @@ C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageData
 C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\GarageDatabase_Content.g.cs
+C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\View\GestioneView.baml
