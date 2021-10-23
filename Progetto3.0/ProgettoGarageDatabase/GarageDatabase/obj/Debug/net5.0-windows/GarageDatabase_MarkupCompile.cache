@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\
+C:\Users\local\OneDrive\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\obj\Debug\net5.0-windows\
 GarageDatabase
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-C:\Users\Local\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\App.xaml
+C:\Users\local\OneDrive\Desktop\GruppoRosso\Progetto3.0\ProgettoGarageDatabase\GarageDatabase\App.xaml
 9491074425
-11926996159
-101491804085
-201577858137
+11072399744
+152001003638
+2011763090170
 MainWindow.xaml;Temi\TemaBottoneChiusura.xaml;Temi\TemaBottoneInserimento.xaml;Temi\TemaMenuBottone.xaml;Temi\TemaMenuBottoneHome.xaml;Temi\TemaTextBoxRicerca.xaml;Temi\TemaToggleButton.xaml;View\GestioneView.xaml;View\HomeView.xaml;
 
 False

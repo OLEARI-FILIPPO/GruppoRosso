@@ -1,19 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "Z31mFbABkaB3x6k3PahH3GNOv1KP0RugjiuKDPB5ucr529TaKUJV1LFqvl7oeaJnHwn62VYYqqOYVCihCMm8dA==",
+  "dgSpecHash": "Tt8hMzqb45iGuRZIHJRTT92LpFCcTz71306FQpmJl0BH+8GhFeWZZvUHtzI9pjfhD/ADwd6S9Vz+LECfwSTR2Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Local\\Desktop\\GruppoRosso\\Progetto3.0\\ProgettoGarageDatabase\\GarageDatabase\\GarageDatabase.csproj",
+  "projectFilePath": "C:\\Users\\local\\OneDrive\\Desktop\\GruppoRosso\\Progetto3.0\\ProgettoGarageDatabase\\GarageDatabase\\GarageDatabase.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Local\\.nuget\\packages\\fontawesome.wpf\\4.7.0.9\\fontawesome.wpf.4.7.0.9.nupkg.sha512",
-    "C:\\Users\\Local\\.nuget\\packages\\haley.extensions\\2.0.2\\haley.extensions.2.0.2.nupkg.sha512",
-    "C:\\Users\\Local\\.nuget\\packages\\haley.ioc\\3.0.2\\haley.ioc.3.0.2.nupkg.sha512",
-    "C:\\Users\\Local\\.nuget\\packages\\haley.mvvm\\6.0.4\\haley.mvvm.6.0.4.nupkg.sha512",
-    "C:\\Users\\Local\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
-    "C:\\Users\\Local\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
-    "C:\\Users\\Local\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",
-    "C:\\Users\\Local\\.nuget\\packages\\protobuf-net\\3.0.73\\protobuf-net.3.0.73.nupkg.sha512",
-    "C:\\Users\\Local\\.nuget\\packages\\protobuf-net.core\\3.0.73\\protobuf-net.core.3.0.73.nupkg.sha512",
-    "C:\\Users\\Local\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512"
+    "C:\\Users\\local\\.nuget\\packages\\fontawesome.wpf\\4.7.0.9\\fontawesome.wpf.4.7.0.9.nupkg.sha512",
+    "C:\\Users\\local\\.nuget\\packages\\haley.extensions\\2.0.2\\haley.extensions.2.0.2.nupkg.sha512",
+    "C:\\Users\\local\\.nuget\\packages\\haley.ioc\\3.0.2\\haley.ioc.3.0.2.nupkg.sha512",
+    "C:\\Users\\local\\.nuget\\packages\\haley.mvvm\\6.0.4\\haley.mvvm.6.0.4.nupkg.sha512",
+    "C:\\Users\\local\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\local\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\local\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",
+    "C:\\Users\\local\\.nuget\\packages\\protobuf-net\\3.0.73\\protobuf-net.3.0.73.nupkg.sha512",
+    "C:\\Users\\local\\.nuget\\packages\\protobuf-net.core\\3.0.73\\protobuf-net.core.3.0.73.nupkg.sha512",
+    "C:\\Users\\local\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512"
   ],
   "logs": [
     {
