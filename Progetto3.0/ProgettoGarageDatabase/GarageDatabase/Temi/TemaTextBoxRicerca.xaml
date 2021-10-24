@@ -23,7 +23,7 @@
                                      />
                             <!-- Questo è il valore di default del placeholder della textblock-->
                             <TextBlock IsHitTestVisible="False"
-                                       Text="Cerca Auto"
+                                       Text="{TemplateBinding Name}"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        Margin="10,0,0,0"

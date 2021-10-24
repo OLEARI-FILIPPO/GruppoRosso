@@ -10,6 +10,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Temi/TemaMenuBottoneStorico.xaml" />
+                <ResourceDictionary Source="Temi/TemaBottone.xaml" />
                 <ResourceDictionary Source="Temi/TemaBottoneInserimento.xaml" />
                 <ResourceDictionary Source="Temi/TemaBottoneUscita.xaml" />
                 <ResourceDictionary Source="Temi/TemaToggleButton.xaml" />
@@ -25,6 +27,10 @@
 
             <DataTemplate DataType="{x:Type viewModel:GestioneViewModel}">
                 <view:GestioneView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:StoricoViewModel}">
+                <view:StoricoView/>
             </DataTemplate>
 
         </ResourceDictionary>

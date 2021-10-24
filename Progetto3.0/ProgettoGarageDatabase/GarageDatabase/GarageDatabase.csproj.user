@@ -16,6 +16,9 @@
     <Compile Update="View\InputView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\StoricoView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -28,6 +31,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Temi\TemaBottoneChiusura.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Temi\TemaBottone.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Temi\TemaMenuBottoneStorico.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Temi\TemaMenuBottoneHome.xaml">
@@ -49,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\InputView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\StoricoView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

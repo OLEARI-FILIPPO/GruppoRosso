@@ -87,6 +87,17 @@
                 </ContentControl.DataContext>
             </ContentControl>
 
+            <ContentControl x:Name="StoricoContent" Grid.Row="1"
+                            Grid.Column="2"
+                            Margin="25,24,30,24"
+                            Content="{Binding StoricoVM}"
+                            Visibility="Hidden">
+
+                <ContentControl.DataContext>
+                    <viewModel:MainViewModel/>
+                </ContentControl.DataContext>
+            </ContentControl>
+
 
 
 
@@ -121,7 +132,7 @@
 
             <RadioButton x:Name="GestioneButton"    Grid.Row="1" 
                             VerticalAlignment="Top" 
-                            Margin="0,120,0,0"
+                            Margin="0,125,0,0"
                             Style="{StaticResource TemaMenuBottone}"
                             Command="{Binding HomeVM}" Checked="GestioneButton_Checked">
 
@@ -142,14 +153,40 @@
 
             </RadioButton>
 
+            <RadioButton x:Name="StoricoButton"    Grid.Row="1" 
+                            VerticalAlignment="Top" 
+                            Margin="0,220,0,0"
+                            Style="{StaticResource TemaMenuBottoneStorico}"
+                            Command="{Binding HomeVM}" Checked="StoricoButton_Checked">
 
-            <TextBox Width="250"
+                <StackPanel x:Name="StoricoSp"
+                            Orientation="Horizontal"
+                            Margin="0,20,0,0" 
+                            >
+
+                    <fa:ImageAwesome x:Name="StoricoIcon"/>
+
+                    <Label x:Name="Storico"  Content="Storico" Visibility="Hidden"
+                           FontSize="22"
+                           VerticalContentAlignment="Top"
+                         Foreground="White" 
+                           VerticalAlignment="Stretch" 
+                           HorizontalContentAlignment="Right" 
+                           Margin="20,0,0,20"/>
+
+
+                </StackPanel>
+
+            </RadioButton>
+
+
+            <!-- <TextBox Width="250"
                      VerticalContentAlignment="Center"
                      HorizontalAlignment="Left"
                      Margin="0,18,0,17" 
                      
                      Grid.Column="2" 
-                     Style="{StaticResource TemaTextboxRicerca}"/>
+                     Style="{StaticResource TemaTextboxRicerca}"/> -->
 
 
 
