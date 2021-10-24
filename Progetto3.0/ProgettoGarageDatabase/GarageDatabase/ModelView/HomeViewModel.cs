@@ -116,13 +116,14 @@ namespace GarageDatabase.ModelView
         }
 
         string oldKey = "P00";
+        Button cliccato;
 
         private void ParhceggioClick(object sender, RoutedEventArgs e)
         {
 
             Bottoni[oldKey].Style = FindResource("StileVeicolo") as Style;
             ((Button)sender).Style = FindResource("VeicoloClick") as Style;
-
+            cliccato = ((Button)sender);
             oldKey = ((Button)sender).Name;
         }
         
@@ -144,5 +145,20 @@ namespace GarageDatabase.ModelView
 
             InputVm.Show();
         }
+
+        private void Btn_esci_Click(object sender, RoutedEventArgs e)
+        {
+            for(int i = 0; i < Bottoni.Count; i++)
+            {
+                if (Bottoni.Values.Contains(cliccato))
+                {
+                    MessageBox.Show(cliccato.Name);
+                    break;
+                }
+            }
+            
+        }
+
+
     }
 }

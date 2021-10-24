@@ -16,21 +16,27 @@ namespace GarageDatabase
         public MainWindow()
         {
             InitializeComponent();
+            
             ds = new DialogService();
             DataContext = new HomeViewModel();
         }
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var result = ds.ShowDialog("Attenzione!", "Terminare l'esecuzione?", 
-                                        Haley.Enums.NotificationIcon.Warning, 
+            var result = ds.ShowDialog("Attenzione!", "Terminare l'esecuzione?",
+                                        Haley.Enums.NotificationIcon.Warning,
                                         Haley.Enums.DialogMode.Confirmation, blurWindows: true);
 
             var res = result.DialogResult;
-            if (res.HasValue  && res.Value)
+            if (res.HasValue && res.Value)
             {
                 Close();
             }
+        }
+
+        private void Btn_esci_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("CIAO");  
         }
 
 
