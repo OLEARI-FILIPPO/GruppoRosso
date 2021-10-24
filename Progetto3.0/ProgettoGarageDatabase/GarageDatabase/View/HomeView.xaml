@@ -26,11 +26,21 @@
     
 
     <StackPanel>
-        <TextBlock Text="Nome del piano"
-                   Foreground="White"
-                   FontSize="33"
-                   HorizontalAlignment="Left"
-                   Margin="0,0,0,20"/>
+        <StackPanel Orientation="Horizontal">
+            <ComboBox Name="SelezionaPiano"
+                  Height="45"
+                  Width="287"
+                  Margin="0,0,0,20"/>
+
+            <Button Content="Button" 
+                Height="45"
+                HorizontalAlignment="Right" 
+                Width="234" VerticalAlignment="Top" 
+                Margin="80,0,0,0"
+                Style="{StaticResource TemaBottoneInserimento}" Click="Button_Click"/>
+        </StackPanel>
+        
+
 
 
         <StackPanel Orientation="Horizontal" >

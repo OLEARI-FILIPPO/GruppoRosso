@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Haley.Abstractions;
+using Haley.MVVM.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,13 +24,10 @@ namespace GarageDatabase.View
     {
         public HomeView()
         {
-         //   InitializeComponent();
-            
-        //    GeneraGrid();
-
+           // InitializeComponent();
+           
         }
 
-      
-
+        
     }
 }
