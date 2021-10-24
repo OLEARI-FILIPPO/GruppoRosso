@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GarageDatabase.View" xmlns:modelview="clr-namespace:GarageDatabase.ModelView" d:DataContext="{d:DesignInstance Type=modelview:MainViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" Width="825">
 
     <UserControl.Resources>
         <Style x:Key="StileVeicolo" TargetType="Button">
@@ -38,16 +38,60 @@
 
         </Style>
 
+        <Style x:Key="VeicoloClick2" TargetType="Button">
+
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="7" Background="Gray" BorderBrush="Black" BorderThickness="1" >
+                            <ContentPresenter x:Name="contentPresenter"  Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+
+        </Style>
+
     </UserControl.Resources>
 
 
 
     <StackPanel>
         <StackPanel Orientation="Horizontal">
-            <ComboBox Name="SelezionaPiano"
-                      Height="45"
-                      Width="287"
-                      Margin="0,0,0,20"/>
+
+            <Slider  x:Name="SelezionaRow"
+                     Height="20" Width="192"
+                     AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" RenderTransformOrigin="0.5,0.5">
+                <Slider.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-1.008"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-0.396"/>
+                    </TransformGroup>
+                </Slider.RenderTransform>
+            </Slider>
+
+            <Slider  x:Name="SelezionaCol"
+                     Height="20" Width="192"
+                     AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" RenderTransformOrigin="0.5,0.5">
+                <Slider.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-1.008"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-0.396"/>
+                    </TransformGroup>
+                </Slider.RenderTransform>
+            </Slider>
+            <Button x:Name="btn_genera" Content="Genera"
+                    Height="40" 
+                    Width="52"
+                    Click = "Btn_genera_Click"
+                    Style="{StaticResource StileVeicolo}" />
+
 
             <Button x:Name="btn_entra" Content="ENTRA" 
                     Height="50" 

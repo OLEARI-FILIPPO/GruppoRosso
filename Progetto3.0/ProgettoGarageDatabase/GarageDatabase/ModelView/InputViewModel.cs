@@ -15,14 +15,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace GarageDatabase.ModelView
 {
     public partial class InputViewModel: Window
     {
-       public InputViewModel()
-       {
+
+        public string targa { get; set; }
+        public InputViewModel()
+        {
             InitializeComponent();
 
+
+
+        }
+
+        private void ok(object sender, RoutedEventArgs e)
+        {
+            HomeViewModel.Bottoni[HomeViewModel.Selected].Content = txtTarga.Text;
+          
+            this.Close();
 
         }
     }

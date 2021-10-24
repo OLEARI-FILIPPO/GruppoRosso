@@ -5,6 +5,7 @@ using System.Windows.Media;
 using Haley.MVVM.Services;
 using Haley.Abstractions;
 
+
 namespace GarageDatabase
 {
     /// <summary>
@@ -19,6 +20,7 @@ namespace GarageDatabase
             
             ds = new DialogService();
             DataContext = new HomeViewModel();
+            
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)

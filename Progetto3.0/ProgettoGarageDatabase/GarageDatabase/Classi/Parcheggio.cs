@@ -22,11 +22,11 @@ namespace GarageDatabase.Classi
 
         public byte ColPark { get; set; }
 
-        public Parcheggio(string idParcheggio, int idPiano, int statoparcheggio)
+        public Parcheggio(string idParcheggio)
         {
             IdParcheggio = idParcheggio;
-            IdPiano = idPiano;
-            StatoParcheggio = statoparcheggio;
+            //IdPiano = idPiano;
+            StatoParcheggio = 0;
         }
 
         public string Entra()
