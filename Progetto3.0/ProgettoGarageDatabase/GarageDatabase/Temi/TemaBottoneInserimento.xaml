@@ -21,8 +21,9 @@
                               Background="Transparent"
                               >
                             <Border CornerRadius="10" Background="#0099ae"/>
-                            <TextBlock Text="Nuovo Veicolo" 
+                            <TextBlock Text="Entra"
                                        VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
                                        FontSize="30" Padding="5"
                                        Foreground="White"
                                        FontWeight="Bold"
@@ -38,8 +39,6 @@
             <Setter Property="BorderThickness" Value="0" />
             
             
-
-
         </Style.Setters>
         
     </Style>

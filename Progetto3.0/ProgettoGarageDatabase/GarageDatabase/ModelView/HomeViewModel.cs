@@ -25,12 +25,15 @@ namespace GarageDatabase.ModelView
        {
             InitializeComponent();
             GeneraGrid();
-        }
+       }
+
+        Dictionary<string, Button> Bottoni = new Dictionary<string, Button>(); //in dizionario salviami le auto parcheggiate
+
 
         private void GeneraGrid()
         {
 
-            int Nrow = 7, Ncol = 7;//numero di colonne e numero di righe
+            int Nrow = 7, Ncol = 7; //numero di colonne e numero di righe
 
             GeneraRigheDinamiche(Nrow);
             GeneraColDinamiche(Ncol);
@@ -98,6 +101,10 @@ namespace GarageDatabase.ModelView
                         Background = new SolidColorBrush(Colors.White),
 
                     };
+                    B.Click += ParhceggioClick;
+
+                    Bottoni.Add("P" + iRow.ToString() + jCol.ToString(), B);
+                    
 
                     panel.Child = B;
                     DynamicGrid.Children.Add(panel);
@@ -105,6 +112,28 @@ namespace GarageDatabase.ModelView
                 }
 
 
+            }
+        }
+
+        string oldKey = "P00";
+
+        private void ParhceggioClick(object sender, RoutedEventArgs e)
+        {
+
+            Bottoni[oldKey].Style = FindResource("StileVeicolo") as Style;
+            ((Button)sender).Style = FindResource("VeicoloClick") as Style;
+
+            oldKey = ((Button)sender).Name;
+        }
+        
+        private void CreatParking()
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    //Parcheggi.Add("P" + i.ToString() + j.ToString(), new Parcheggio(i.ToString(), j.ToString()));
+                }
             }
         }
 

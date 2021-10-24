@@ -21,9 +21,26 @@
             </Setter>
 
         </Style>
+
+        <Style x:Key="VeicoloClick" TargetType="Button">
+
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="7" Background="#AAE5DB" BorderBrush="Black" BorderThickness="1" >
+                            <ContentPresenter x:Name="contentPresenter"  Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+
+        </Style>
+
     </UserControl.Resources>
 
-    
+
 
     <StackPanel>
         <StackPanel Orientation="Horizontal">
@@ -33,20 +50,26 @@
                   Margin="0,0,0,20"/>
 
             <Button Content="Button" 
-                Height="45"
-                HorizontalAlignment="Right" 
-                Width="234" VerticalAlignment="Top" 
+                Height="50" 
+                Width="157" VerticalAlignment="Top" 
                 Margin="80,0,0,0"
                 Style="{StaticResource TemaBottoneInserimento}" Click="Button_Click"/>
+
+
+            <Button Content="ButtonExit" 
+                Height="50" 
+                Width="156" VerticalAlignment="Top" 
+                Margin="80,0,0,0"
+                Style="{StaticResource TemaBottoneInserimento}" RenderTransformOrigin="0.192,0.5"/>
         </StackPanel>
-        
+
 
 
 
         <StackPanel Orientation="Horizontal" >
             <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
-                <Grid x:Name="DynamicGrid" Width="711" Height="377">
+                <Grid x:Name="DynamicGrid" Width="711" Height="377" >
 
                 </Grid>
 
