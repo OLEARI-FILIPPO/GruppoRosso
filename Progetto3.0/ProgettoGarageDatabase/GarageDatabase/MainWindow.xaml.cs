@@ -27,7 +27,7 @@ namespace GarageDatabase
                                         Haley.Enums.DialogMode.Confirmation, blurWindows: true);
 
             var res = result.DialogResult;
-            if (res.HasValue  && res.Value  == true)
+            if (res.HasValue  && res.Value)
             {
                 Close();
             }

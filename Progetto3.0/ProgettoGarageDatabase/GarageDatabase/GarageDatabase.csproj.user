@@ -21,6 +21,9 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Temi\TemaBottoneUscita.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Temi\TemaBottoneInserimento.xaml">
       <SubType>Designer</SubType>
     </Page>

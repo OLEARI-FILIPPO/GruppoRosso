@@ -4,12 +4,14 @@
              xmlns:local="clr-namespace:GarageDatabase"
              xmlns:viewModel ="clr-namespace:GarageDatabase.ModelView"
              xmlns:view="clr-namespace:GarageDatabase.View"
-             StartupUri="MainWindow.xaml">
+             StartupUri="MainWindow.xaml"
+             ShutdownMode="OnMainWindowClose">      <!-- Aggiunta per terminare correttamente il processo -->
     
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Temi/TemaBottoneInserimento.xaml" />
+                <ResourceDictionary Source="Temi/TemaBottoneUscita.xaml" />
                 <ResourceDictionary Source="Temi/TemaToggleButton.xaml" />
                 <ResourceDictionary Source="Temi/TemaMenuBottone.xaml" />
                 <ResourceDictionary Source="Temi/TemaMenuBottoneHome.xaml" />
