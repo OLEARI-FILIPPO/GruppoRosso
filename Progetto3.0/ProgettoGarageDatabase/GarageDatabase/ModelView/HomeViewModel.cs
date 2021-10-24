@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Haley.Abstractions;
+using Haley.MVVM.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,12 +20,12 @@ namespace GarageDatabase.ModelView
     public partial class HomeViewModel : UserControl
     {
 
+       
        public HomeViewModel()
        {
             InitializeComponent();
-
             GeneraGrid();
-       }
+        }
 
         private void GeneraGrid()
         {
@@ -106,7 +108,12 @@ namespace GarageDatabase.ModelView
             }
         }
 
+        //Parte la message box personalizzata
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            InputViewModel InputVm = new InputViewModel();
 
+            InputVm.Show();
+        }
     }
 }
-

@@ -14,10 +14,8 @@
         AllowsTransparency="True"
         WindowStyle="None"
         >
-
-    <Window.DataContext>
-        <viewModel:MainViewModel />
-    </Window.DataContext>
+    
+    
 
     <Border x:Name="MenuGarage" Background="#222537"
             CornerRadius="20">

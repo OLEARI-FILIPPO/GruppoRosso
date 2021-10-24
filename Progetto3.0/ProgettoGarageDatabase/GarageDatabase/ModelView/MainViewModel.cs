@@ -7,7 +7,9 @@ namespace GarageDatabase.ModelView
     {
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand GestioneViewCommand { get; set; }
+        public RelayCommand InputCommand { get; set; }
         public HomeViewModel HomeVM { get; set; }
+        public InputViewModel InputVM { get; set; }
         public GestioneView GestioneVM { get; set; }
 
         private object currentView;
@@ -22,6 +24,7 @@ namespace GarageDatabase.ModelView
         {
             HomeVM = new HomeViewModel();
             GestioneVM = new GestioneView();
+            InputVM = new InputViewModel();
 
             CurrentView = HomeVM;
 
@@ -29,6 +32,15 @@ namespace GarageDatabase.ModelView
             {
                 CurrentView = HomeVM;
             });
+
+
+            InputCommand = new RelayCommand(o =>
+            {
+                CurrentView = InputVM ;
+            });
+
+
+
 
             GestioneViewCommand = new RelayCommand(o =>
             {

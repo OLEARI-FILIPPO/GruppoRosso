@@ -9,6 +9,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Temi/TemaBottoneInserimento.xaml" />
                 <ResourceDictionary Source="Temi/TemaToggleButton.xaml" />
                 <ResourceDictionary Source="Temi/TemaMenuBottone.xaml" />
                 <ResourceDictionary Source="Temi/TemaMenuBottoneHome.xaml" />
