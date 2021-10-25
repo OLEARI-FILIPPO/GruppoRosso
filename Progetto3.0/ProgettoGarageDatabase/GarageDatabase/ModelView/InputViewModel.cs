@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
 
 
 namespace GarageDatabase.ModelView
@@ -21,7 +22,7 @@ namespace GarageDatabase.ModelView
     public partial class InputViewModel: Window
     {
 
-        public string targa { get; set; }
+        public static string targa { get; set; }
         public InputViewModel()
         {
             InitializeComponent();
@@ -30,10 +31,27 @@ namespace GarageDatabase.ModelView
 
         }
 
+        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-M63NC6P\SQLEXPRESSNEW;Initial Catalog=database;User ID=sa;Password=Fillo-fous05");
+
         private void ok(object sender, RoutedEventArgs e)
         {
+
+            connection.Open();
+
+            string storico = "INSERT INTO Storico (IdParcheggio, DataOrarioIngresso, Targa) VALUES ('" + HomeViewModel.Bottoni[HomeViewModel.Selected].Name + "', '" + Convert.ToString(DateTime.Now) + "', '" + txtTarga.Text + "')";
+            SqlCommand storicoComando = new SqlCommand(storico, connection);
+            storicoComando.ExecuteNonQuery();
+
+            connection.Close();
+
+
+            //HomeViewModel.LisPlate = txtTarga.Text;
             HomeViewModel.Bottoni[HomeViewModel.Selected].Content = txtTarga.Text;
+
+
           
+            //  targa = txtTarga.Text;
+            //SqlConnection connection = new SqlConnection();
             this.Close();
 
         }

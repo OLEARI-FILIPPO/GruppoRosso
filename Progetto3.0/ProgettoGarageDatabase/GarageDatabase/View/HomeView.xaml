@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GarageDatabase.View" xmlns:modelview="clr-namespace:GarageDatabase.ModelView" d:DataContext="{d:DesignInstance Type=modelview:MainViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" Width="825">
+             d:DesignHeight="450" Width="825"
+             Loaded="HomeView_Loaded">
 
     <UserControl.Resources>
         <Style x:Key="StileVeicolo" TargetType="Button">
@@ -101,9 +102,9 @@
 
 
         <StackPanel Orientation="Vertical" >
-            <Border HorizontalAlignment="Stretch" Height="356">
+            <Border HorizontalAlignment="Left" Height="356" Width="756">
 
-                <Grid x:Name="DynamicGrid" Width="768" Margin="0,0,0,16"/>
+                <Grid x:Name="DynamicGrid" Width="717" Margin="0,10,0,16"/>
 
             </Border>
             <StackPanel Orientation="Horizontal">

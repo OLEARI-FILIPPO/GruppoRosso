@@ -22,18 +22,18 @@ namespace GarageDatabase.ModelView
     public partial class HomeViewModel : UserControl
     {
 
+        const decimal tariffa = 1.8M;
+
        
        public HomeViewModel()
        {
             InitializeComponent();
-            btn_entra.Visibility = Visibility.Hidden;
-            btn_esci.Visibility = Visibility.Hidden;
 
             connection.Open();
              //MessageBox.Show(id);
-            string commandoInserimento = "DELETE FROM Parcheggio";
-            SqlCommand command = new SqlCommand(commandoInserimento, connection);
-            command.ExecuteNonQuery();
+            //string commandoInserimento = "DELETE FROM Parcheggio";
+           // SqlCommand command = new SqlCommand(commandoInserimento, connection);
+            //command.ExecuteNonQuery();
             connection.Close();
             //  GeneraGrid();
 
@@ -174,13 +174,15 @@ namespace GarageDatabase.ModelView
 
         }
 
+
+        public static string LisPlate = "";
         private void openConnect(string id)
         {
             connection.Open();
           //  MessageBox.Show(id);
-            string commandoInserimento = "INSERT INTO Parcheggio VALUES ('" + id + "', 0, NULL, NULL,NULL)";
-            SqlCommand command = new SqlCommand(commandoInserimento, connection);
-            command.ExecuteNonQuery();
+            //string commandoInserimento = "INSERT INTO Parcheggio VALUES ('" + id + "', 0, NULL, NULL,NULL)";
+            //SqlCommand command = new SqlCommand(commandoInserimento, connection);
+            //command.ExecuteNonQuery();
 
             connection.Close();
         }
@@ -202,10 +204,17 @@ namespace GarageDatabase.ModelView
             if (bit == 0)
             {
                 connection.Open();
-                MessageBox.Show(id);
+               // MessageBox.Show(id);
                 string commandoUpdate = "UPDATE Parcheggio set Stato = 1 WHERE IdParcheggio = '"+id+"'";
                 SqlCommand UPcommand = new SqlCommand(commandoUpdate, connection);
                 UPcommand.ExecuteNonQuery();
+
+
+              /* string storico = "INSERT INTO Storico (IdParcheggio, DataOrarioIngresso, Targa) VALUES ('" + id + "', '" + Convert.ToString(DateTime.Now) + "', '"+Bottoni[Selected].Content+"')";
+                SqlCommand storicoComando = new SqlCommand(storico, connection);
+                storicoComando.ExecuteNonQuery();*/
+
+
                 connection.Close();
                 return id;
             }
@@ -217,39 +226,143 @@ namespace GarageDatabase.ModelView
           
         }
 
+        
+
         private string Esci(string id, Button b)
         {
             connection.Open();
-            MessageBox.Show(id);
+           // MessageBox.Show(id);
             string commandoUpdate = "UPDATE Parcheggio set Stato = 0 WHERE IdParcheggio = '" + id + "'";
             SqlCommand UPcommand = new SqlCommand(commandoUpdate, connection);
+
+            string commandoSelect = "SELECT DataOrarioIngresso FROM Storico";
+            SqlCommand selectIngresso = new SqlCommand(commandoSelect, connection);
+
+            commandoSelect = "SELECT DataOraUscita FROM Storico";
+            SqlCommand selectUscita = new SqlCommand(commandoSelect, connection);
+
+            //TimeSpan invterval = 
 
             b.Content = id;
             b.Style = FindResource("StileVeicolo") as Style;
             UPcommand.ExecuteNonQuery();
+            DateTime date1 = Convert.ToDateTime(selectIngresso.ExecuteScalar());
+            DateTime date2 = Convert.ToDateTime(selectUscita.ExecuteScalar());
+
+
+            /*double interval = Math.Abs(date1.Subtract(date2).TotalSeconds);
+            decimal incasso = (decimal)interval * tariffa;
+
+            commandoUpdate = "UPDATE Parcheggio set Incasso = " + incasso + " WHERE IdParcheggio = '" + id + "'";
+            SqlCommand updateCommand = new SqlCommand(commandoUpdate, connection);
+
+            updateCommand.ExecuteNonQuery();
+            */
+            //MessageBox.Show("intervallo= " + date1.ToString() + "   "+ date2.ToString() + " tempo: " + interval);
+
+            //MessageBox.Show((selectIngresso));
+            ///Console.WriteLine("   {0,-35} {1,20}", "Total Number of Minutes:", interval.TotalMinutes);
             connection.Close();
             return "Tempo";
+        }
+
+        private void HomeView_Loaded(object sender, RoutedEventArgs e)
+        {
+            connection.Open();
+            string commandoSelect = "SELECT COUNT(*) FROM Piano";
+            SqlCommand command = new SqlCommand(commandoSelect, connection);
+
+            int numero = Convert.ToInt32(command.ExecuteScalar());
+            //MessageBox.Show(Convert.ToString(command.ExecuteScalar()));
+            connection.Close();
+
+            if (numero != 0)
+            {
+                connection.Open();
+                string prendiRC = "SELECT Nrighe FROM Piano";
+                SqlCommand comando = new SqlCommand(prendiRC, connection);
+
+                Nrow = Convert.ToInt32(comando.ExecuteScalar());
+
+
+                prendiRC = "SELECT Ncol FROM Piano";
+                comando = new SqlCommand(prendiRC, connection);
+
+                Ncol = Convert.ToInt32(comando.ExecuteScalar());
+
+                string veicoliEntrati = "select Parcheggio.IdParcheggio, Storico.Targa  from Parcheggio   join Storico on Storico.IdParcheggio = Parcheggio.IdParcheggio      WHERE Stato = 1";
+              
+
+                //GeneraButton();
+                
+
+                
+
+
+
+                
+                Bottoni.Clear();
+                Parcheggi.Clear();
+                btn_genera.IsEnabled = false;
+                SelezionaCol.IsEnabled = false;
+                SelezionaRow.IsEnabled = false;
+                btn_entra.Visibility = Visibility.Visible;
+                btn_esci.Visibility = Visibility.Visible;
+                connection.Close();
+                GeneraGrid();
+
+                Dictionary<string, string> valori = new Dictionary<string, string>();
+                connection.Open();
+                comando = new SqlCommand(veicoliEntrati, connection);
+
+                SqlDataReader entrati = comando.ExecuteReader();
+                if (entrati.HasRows)
+                {
+                    while (entrati.Read())
+                    {
+                        string s = entrati["IdParcheggio"] as string;
+                        string targa = entrati["Targa"] as string;
+                        valori.Add(s, targa);
+                        //MessageBox.Show("id: " + Bottoni["P01"].Name);
+                        Bottoni[s].Content = targa;
+
+                    }
+                }
+                connection.Close();
+            }
         }
 
         private void Btn_genera_Click(object sender, RoutedEventArgs e)
         {
             connection.Open();
-            string commandoSelect = "SELECT RowPark, ColPark FROM Parcheggio";
-            SqlCommand command = new SqlCommand(commandoSelect, connection);
-            //MessageBox.Show(Convert.ToString(command.ExecuteScalar()));
-            
-            /*if(Convert.ToString(command.ExecuteScalar() ) == "")
-            {
 
-            }*/
-                connection.Close();
+            
+
+
+
             Nrow = Convert.ToInt32(SelezionaRow.Value);
             Ncol = Convert.ToInt32(SelezionaCol.Value);
             Bottoni.Clear();
             Parcheggi.Clear();
-            btn_genera.Visibility = Visibility.Hidden;
+            btn_entra.IsEnabled = true;
+            btn_esci.IsEnabled = true;
+            btn_genera.IsEnabled = false;
             btn_entra.Visibility = Visibility.Visible;
             btn_esci.Visibility = Visibility.Visible;
+            SelezionaCol.IsEnabled = false;
+            SelezionaRow.IsEnabled = false;
+
+
+            string commandoInsert = "INSERT INTO Piano (Piano, Ncol, Nrighe, Nome) Values (0, " + Ncol + ", " + Nrow + ", 'Primo') ";
+            SqlCommand cmd = new SqlCommand(commandoInsert, connection);
+
+            cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+
+
+            //int righe = Convert.ToInt32(command.ExecuteScalar());
 
             GeneraGrid();
 
@@ -268,13 +381,25 @@ namespace GarageDatabase.ModelView
                 //null se occupato
                 
                 Entra(oldKey);
+
+                
+
                 InputVm.Show();
+
+                connection.Open();
+
+                string commandoUpdate = "UPDATE Storico SET DataOrarioIngresso = '"+DateTime.Now+"' WHERE IdParcheggio = '" + cliccato.Name + "'";
+                SqlCommand UPcommand = new SqlCommand(commandoUpdate, connection);
+                UPcommand.ExecuteNonQuery();
+
+
+                connection.Close();
                 //  InputVm.targa;
 
             }
-            
 
-          //  GeneraGrid();
+
+            //  GeneraGrid();
         }
 
         private void Btn_esci_Click(object sender, RoutedEventArgs e)
@@ -283,8 +408,21 @@ namespace GarageDatabase.ModelView
             {
                 if (Bottoni.Values.Contains(cliccato))
                 {
-                    MessageBox.Show(cliccato.Name);
+                    // MessageBox.Show(cliccato.Name);
                     //Esci(cliccato.Name);
+
+                    connection.Open();
+                    string commandoUpdate = "UPDATE Storico SET DataOraUscita = '" + DateTime.Now + "' WHERE IdParcheggio = '" + cliccato.Name + "'";
+                    SqlCommand UPcommand = new SqlCommand(commandoUpdate, connection);
+                    UPcommand.ExecuteNonQuery();
+                    connection.Close();
+
+
+
+                    //   string commandoUpdate = "UPDATE Storico set DataOraUscita WHERE IdParcheggio = '" + cliccato.Name + "'";
+                    //   SqlCommand UPcommand = new SqlCommand(commandoUpdate, connection);
+                    //  UPcommand.ExecuteNonQuery();
+
                     MessageBox.Show(Esci(cliccato.Name,cliccato));
                     break;
                 }
