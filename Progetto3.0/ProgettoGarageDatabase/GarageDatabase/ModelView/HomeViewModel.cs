@@ -43,7 +43,7 @@ namespace GarageDatabase.ModelView
         Dictionary<string, Parcheggio> Parcheggi = new Dictionary<string, Parcheggio>();
 
         //string constring = "Server = DESKTOP-R6PQGP4\\SQLEXPRESSNEW; Database=Test; User Id=sa; Password = Danishveer&17012001";
-        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-R6PQGP4\SQLEXPRESSNEW;Initial Catalog=GestioneParcheggio;User ID=sa;Password=Danishveer&17012001");
+        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-M63NC6P\SQLEXPRESSNEW;Initial Catalog=database;User ID=sa;Password=Fillo-fous05");
 
         int Nrow = 7, Ncol = 7; //numero di colonne e numero di righe
 
@@ -233,6 +233,16 @@ namespace GarageDatabase.ModelView
 
         private void Btn_genera_Click(object sender, RoutedEventArgs e)
         {
+            connection.Open();
+            string commandoSelect = "SELECT RowPark, ColPark FROM Parcheggio";
+            SqlCommand command = new SqlCommand(commandoSelect, connection);
+            //MessageBox.Show(Convert.ToString(command.ExecuteScalar()));
+            
+            /*if(Convert.ToString(command.ExecuteScalar() ) == "")
+            {
+
+            }*/
+                connection.Close();
             Nrow = Convert.ToInt32(SelezionaRow.Value);
             Ncol = Convert.ToInt32(SelezionaCol.Value);
             Bottoni.Clear();

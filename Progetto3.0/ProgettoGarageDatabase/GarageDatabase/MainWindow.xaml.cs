@@ -38,7 +38,7 @@ namespace GarageDatabase
 
         private void Btn_esci_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("CIAO");  
+            //MessageBox.Show("CIAO");
         }
 
 
