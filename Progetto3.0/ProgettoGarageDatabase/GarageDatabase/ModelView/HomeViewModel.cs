@@ -22,7 +22,7 @@ namespace GarageDatabase.ModelView
     public partial class HomeViewModel : UserControl
     {
 
-        const decimal tariffa = 1.8M;
+        const float tariffa = 1.8f;
 
        
        public HomeViewModel()
@@ -179,10 +179,22 @@ namespace GarageDatabase.ModelView
         private void openConnect(string id)
         {
             connection.Open();
-          //  MessageBox.Show(id);
-            //string commandoInserimento = "INSERT INTO Parcheggio VALUES ('" + id + "', 0, NULL, NULL,NULL)";
-            //SqlCommand command = new SqlCommand(commandoInserimento, connection);
-            //command.ExecuteNonQuery();
+            //  MessageBox.Show(id);
+            string commandoSelect = "SELECT * FROM Parcheggio";
+            SqlCommand command = new SqlCommand(commandoSelect, connection);
+            SqlDataReader risultato = command.ExecuteReader();
+
+            
+            if (!risultato.HasRows)
+            {
+                connection.Close();
+                connection.Open();
+                string commandoInserimento = "INSERT INTO Parcheggio VALUES ('" + id + "', 0, NULL, NULL,NULL)";
+                SqlCommand command2 = new SqlCommand(commandoInserimento, connection);
+                command2.ExecuteNonQuery();
+            }
+
+            
 
             connection.Close();
         }
@@ -250,17 +262,32 @@ namespace GarageDatabase.ModelView
             DateTime date2 = Convert.ToDateTime(selectUscita.ExecuteScalar());
 
 
-            /*double interval = Math.Abs(date1.Subtract(date2).TotalSeconds);
-            decimal incasso = (decimal)interval * tariffa;
+            float interval = (float)Math.Abs(date1.Subtract(date2).TotalSeconds);
+            float incasso = (float)Math.Round((interval * tariffa), 2, MidpointRounding.ToEven);
 
-            commandoUpdate = "UPDATE Parcheggio set Incasso = " + incasso + " WHERE IdParcheggio = '" + id + "'";
+            commandoUpdate = "UPDATE Parcheggio set Incasso = @par1  WHERE IdParcheggio = @par2";
+
             SqlCommand updateCommand = new SqlCommand(commandoUpdate, connection);
 
+            updateCommand.Parameters.AddWithValue("@par1", incasso);
+            updateCommand.Parameters.AddWithValue("@par2", id);
+
             updateCommand.ExecuteNonQuery();
-            */
+
+
+            commandoUpdate = "UPDATE Storico set Incasso = @par1  WHERE IdParcheggio = @par2 and DataOraUscita = @par3";
+            SqlCommand updateCommandStorico = new SqlCommand(commandoUpdate, connection);
+
+            updateCommandStorico.Parameters.AddWithValue("@par1", incasso);
+            updateCommandStorico.Parameters.AddWithValue("@par2", id);
+            updateCommandStorico.Parameters.AddWithValue("@par3", date2);
+
+            updateCommandStorico.ExecuteNonQuery();
+
+
             //MessageBox.Show("intervallo= " + date1.ToString() + "   "+ date2.ToString() + " tempo: " + interval);
 
-            //MessageBox.Show((selectIngresso));
+            //MessageBox.Show((incasso.ToString()));
             ///Console.WriteLine("   {0,-35} {1,20}", "Total Number of Minutes:", interval.TotalMinutes);
             connection.Close();
             return "Tempo";
